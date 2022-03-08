@@ -1,0 +1,37 @@
+:root {
+  --marrom-escuro: #b09158;
+  --marrom-claro: #b0915870;
+}
+
+header {
+  width: 100vw;
+  color: var(--marrom-escuro);
+  padding: 20px 0;
+}
+
+header .image img{
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100vw;
+}
+
+.menu {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  margin-bottom: 20px;
+}
+.menu ul {
+  display: flex;
+  flex-direction: row;
+  gap: 60px;
+  list-style: none;
+  color: var(--marrom-escuro);
+}
+.menu ul li {
+  font-family: "Inter", sans-serif;
+  font-style: medium;
+  font-size: 18px;
+  text-decoration: none;
+}
+
