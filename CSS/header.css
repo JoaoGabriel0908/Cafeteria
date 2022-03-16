@@ -1,24 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Recursive:wght@500&family=Sura:wght@700&display=swap');
 :root {
   --marrom-escuro: #b09158;
   --marrom-claro: #b0915870;
+  --preto: #00000069;
+
+  --fonte-titulo:'Sura', serif;
+  --fonte-subtitulo: "SoDo Sans";
+  --fonte-texto:"Inter", sans-serif;
 }
 
 header {
-  width: 100vw;
+  width: 100%;
   color: var(--marrom-escuro);
   padding: 20px 0;
 }
-
-header .image img{
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 100vw;
+header .image {
+  background-image: url(../IMG/coffe.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  height: 400px;
+  width: 100%;
+}
+header .image .texto{
+  color: aliceblue;
+  margin: auto;
+  padding-top: 50px;
+  width: 350px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-right: 250px;
+}
+header .image .texto-titulo{
+  margin-bottom: 30px;
+  font-size: 3rem;
+  font-weight: bold;
+  font-family: var(--fonte-titulo);
+}
+header .image .texto-subtitulo{
+  font-family: var(--fonte-subtitulo);
+  text-align: center;
+  line-height: 1.5rem;
+  font-size: 1.1rem;
 }
 
 .menu {
   display: flex;
   justify-content: space-around;
+  align-items: center;
   flex-direction: row;
+  margin: auto;
   margin-bottom: 20px;
 }
 .menu ul {
@@ -28,10 +60,23 @@ header .image img{
   list-style: none;
   color: var(--marrom-escuro);
 }
-.menu ul li {
-  font-family: "Inter", sans-serif;
+.menu ul a{
+  font-family: var(--fonte-texto);
   font-style: medium;
   font-size: 18px;
-  text-decoration: none;
+  color: var(--marrom-escuro);
+  padding-bottom: 20px;
 }
-
+.menu ul a:hover{
+  color:var(--preto);
+  transition: .2s;
+  border-bottom: 2px solid var(--preto);
+}
+.logo{
+  font-size: 1.5rem;
+  font-family: var(--fonte-titulo);
+  cursor: pointer;
+}
+.logo:hover{
+  color: var(--preto);
+}
