@@ -19,13 +19,13 @@ header .image {
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  height: 400px;
+  height: 500px;
   width: 100%;
 }
 header .image .texto{
   color: aliceblue;
   margin: auto;
-  padding-top: 50px;
+  padding-top: 100px;
   width: 350px;
   display: flex;
   align-items: center;

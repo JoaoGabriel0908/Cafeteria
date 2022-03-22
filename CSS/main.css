@@ -21,6 +21,7 @@
     margin: auto;
     display: flex;
     justify-content: center;
+    
 }
 .container .image{
     width: 350px;
@@ -35,21 +36,42 @@
     object-fit: contain;
     margin: auto;
 }
+
+/*  Sobre Lado esquerdo e direito */
 .lado-esquerdo,
 .lado-direito{
     width: 400px;
-    margin: 10px auto;
+    margin: 50px auto;
 }
 .lado-esquerdo div,
 .lado-direito div{
-    margin-top: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     display: flex;
+    flex-direction: column;
 }
 .lado-esquerdo div img,
 .lado-direito div img{
     object-fit: contain;
     margin: auto 20px;
 }
+.lado-direito {
+    text-align: end;
+}
+.lado-direito .sobre,
+.lado-esquerdo .sobre {
+    display: flex;
+    flex-direction: row;
+}
+
+.lado-esquerdo div p,
+.lado-direito div p{
+    font-family: var(--fonte-destacado);
+    color: var(--marrom-escuro);
+    font-size: 24px;
+    margin: auto auto;
+}
+    
 .bem-vindo{
     display: flex;
     align-items: center;
@@ -60,9 +82,13 @@
 }
 .bem-vindo1{
     font-family: var(--fonte-apresentacao);
-    font-size: 1.4rem;
+    font-size: 2rem;
     color: var(--marrom-escuro);
 }
+.bem-vindo2{
+    font-size: 1.4rem;
+}
+
 
 /* Seção Categorias */
 section.color-categorias{
