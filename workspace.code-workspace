@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "cafeteria",
+			"path": ".."
+		},
+		{
+			"name": "CMS",
+			"path": "..\\..\\..\\..\\..\\xampp\\htdocs\\joao\\CMS"
+		}
+	],
+	"settings": {}
+}

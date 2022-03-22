@@ -1,10 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Recursive:wght@500&family=Sura:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Readex+Pro:wght@500&display=swap');
 
 :root {
     --marrom-escuro: #b09158;
     --marrom-claro: #b0915870;
     --preto: #00000069;
+    --confirmar: #0B7428;
   
+    --fonte-destacado:'Readex Pro', sans-serif;
     --fonte-titulo:'Sura', serif;
     --fonte-subtitulo: "SoDo Sans";
     --fonte-texto:"Inter", sans-serif;
@@ -65,11 +68,15 @@
 section.color-categorias{
     background-color: var(--marrom-escuro);
     width: 100%;
+    padding: 20px;
 }
 section.color-categorias .titulo{
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 20px;
+    font-family: var(--fonte-destacado);
+    font-size: 36px;
 }
 div.categorias{
     max-width: 1300px;
@@ -78,4 +85,26 @@ div.categorias{
     margin: auto auto;
     align-items: center;
     justify-content: space-evenly;
+    margin-bottom: 30px;
+    font-size: 24px;
+}
+.color-categorias button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto auto;
+    width: 300px;
+    cursor: pointer;
+    background-color: var(--confirmar);
+    height: 50px;
+    color: whitesmoke;
+    font-family: var(--fonte-destacado);
+    font-size: 24px;
+}
+.categorias div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
 }
