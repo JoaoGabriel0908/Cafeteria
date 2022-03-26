@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&family=Sura&display=swap');
+section.tela-autenticacao{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 250px;
+}
+div.autenticacao{
+    border: 1px solid rgba(0, 0, 0, 0.541);
+    width: 50%;
+    height: 400px;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    flex-direction: column;
+}
+div.texto-cms{
+    text-align: center;
+    margin-bottom: 50px;
+    font-family: 'Roboto Slab', serif;
+    font-size: 48px;
+}
+.nomeProjeto{
+    font-size: 36px;
+    font-family: 'Sura', serif;
+}
+.login, .senha{
+    display: flex;
+    width: 70%;
+}
+.login p, .senha p{
+    font-family: 'Roboto Slab', serif;
+    font-size: 24px;
+    display: flex;
+    align-items: flex-start;
+    padding-right: 20px;
+    width: 30%;
+}
+.txt{
+    width: 70%;
+    height: 30px;
+    display: flex;
+    align-items: flex-start;
+}
+
+form{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.button{
+    margin-top: 30px;
+    padding: 20px 50px;
+    background-color: rgb(245, 46, 46);
+    color: white;
+    box-shadow: 0 0 5px black;
+    cursor: pointer;
+    font-size: 24px;
+}
