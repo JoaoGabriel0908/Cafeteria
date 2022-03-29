@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&family=Sura&display=swap');
 body{
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
 }
 
 /* Header */
@@ -71,6 +74,12 @@ section .logout{
 section .logout .bem-vindo{
     margin-bottom: 20px;
 }
+/* Principal */
+section.principal{
+    flex-grow: 1;
+    max-height: 500px;
+    height: auto;
+}
 
 /* Footer */
 footer{
@@ -83,11 +92,9 @@ footer{
     height: 100px;
 }
 footer .copyright{
-
+    margin-right: 30vw;
+    margin-left: 30vw;
 }
 footer .desenvolvido{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
+    
 }

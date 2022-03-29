@@ -136,6 +136,11 @@ div.categorias{
     max-width: 1300px;
 }
 
+section.produtos{
+    max-width: 1300px;
+    margin: auto;
+}
+
 .card-container{
     padding: 50px 0;
     display: flex;
@@ -246,24 +251,31 @@ button.info:hover{
     box-shadow: 0px 0px 5px 5px #000;
 }
 
+/* Seção Promoção */
 section.promocao{
+    max-width: 1300px;
+    margin: auto;
+    margin-bottom: 100px;
+}
+section.promocao-total{
     width: 100%;
 }
 div.promocao-cards{
     display: flex;
     flex-direction: row;
     margin: auto;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 .promocao-texto{
-    width: 300px;
+    width: 400px;
     height: 150px;
-    margin: auto;
+    margin: 20px auto ;
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
     padding-top: 60px ;
+    gap: 10px;
 }
 section.promocao div.promocoes{
     height: 400px;
@@ -271,13 +283,158 @@ section.promocao div.promocoes{
     display: flex;
     align-items: center;
     flex-direction: column;
+    border: 1px solid var(--preto);
+}
+.promocao .info-img{
+    height: 250px;
+    width: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--marrom-claro);
 }
 .promocao div img{
-    height: 130px;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .promocao .promocoes .info{
+    width: inherit;
+    height: 150px;
+    padding: 20px;
+}
+.riscar{
+    text-decoration: line-through;
+    float: left;
+    font-size: 24px;
+    margin-right: 100px;
+}
+div.precos{
+    display: flex;
+}
+.preco-atual{
+    font-style: italic;
+    font-size: 24px;
+    float: right;
+    margin-right: 150px;
+}
+.combo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto 10px auto;
+    font-size: 24px;
+}
+.promocao-titulo{
+    font-family: var(--fonte-destacado);
+    font-size: 36px;
+}
+.promocao-descricao{
+    font-family: var(--fonte-destacado);
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    margin: auto;
+}
+.card-pagar-promocao{
+    background-color: var(--confirmar);
+    color: white;
+    font-size: 24px;
+    padding: 5px;
+    margin: auto;
+    width: 75%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: .5s;
+}
+.card-pagar-promocao:hover{
+    box-shadow: 0px 0 5px 5px #000;
+}
+
+/* Seção Contatos */
+footer{
+    display: flex;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    height: 500px;
+}
+div.contato{
+    flex-grow: 3;
+    background-color: black;
+    color: white;
     display: flex;
     align-items: center;
     flex-direction: column;
-
+    justify-content: center;
+    height: inherit;
+}
+div.contato p{
+    font-size: 48px;
+    font-family: var(--fonte-apresentacao);
+}
+div.contato .caixas{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 50px;
+    margin-top: 20px;
+}
+div.contato .caixas input{
+    height: 40px;
+    width: 400px;
+    align-items: center;
+    text-align: center;
+    border: 0;
+    color: var(--marrom-escuro);
+    border-bottom: 5px solid grey;
+    outline: 0;
+}
+div.contato .caixas input:focus{
+    border-bottom: 5px solid var(--marrom-escuro);
+}
+div.contato .caixas input:nth-child(3){
+    height: 100px;
+}
+div.info-contato{
+    flex-grow: 1;
+    background-color: grey;
+    color: white;
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 20px;
+}
+div button.enviar{
+    height: 40px;
+    width: 400px;
+    background-color: grey;
+    color: white;
+    cursor: pointer;
+    transition: .5s;
+}
+div button.enviar:hover{
+    background-color: var(--marrom-claro);
+}
+div.horario,.endereco,.suporte{
+    height: 105px;
+    width: 350px;
+}
+div.info-contato .titulo{
+    font-size: 24px;
+    color: black;
+}
+div .icones i{
+    font-size: 50px;
+    margin-left: 20px;
+    margin-right: 20px;
 }

@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="CSS/header.css" />
   <link rel="stylesheet" href="./CSS/main.css" />
   <link rel="stylesheet" href="CSS/style.css" />
+  <script src="https://kit.fontawesome.com/d0d3619a1c.js" crossorigin="anonymous"></script>
   <script src="main.js" defer></script>
   <title>Cafeteria</title>
 </head>
@@ -126,6 +127,7 @@
     </div>
     <button>Mais Categorias</button>
   </section>
+
   <section class="produtos">
     <div class="card-container">
       <div class="card">
@@ -152,49 +154,97 @@
       </div>
     </div>
   </section>
+
   <section class="promocao">
-    <div class="promocao-texto">
-      <p>Combos New Caffeine</p>
-      <p>Peça mais e pague menos!</p>
+
+    <div class="promocao-total">
+      <div class="promocao-texto">
+        <p class="promocao-titulo">Combos New Caffeine</p>
+        <p class="promocao-descricao">Peça mais e pague menos!</p>
+      </div>
+      
+      <div class="promocao-cards">
+        <div class="card-promocao1 promocoes">
+          <div class="info-img">
+            <img src="IMG/copopretocortado (2).png" alt="cafe" class="card-cafe">
+            <img src="IMG/saco_de_café-removebg-preview (1) 1.png" alt="">
+          </div>
+          <div class="info">
+            <div class="precos">
+              <p class="riscar">12,99</p>
+              <p class="preco-atual">8,99</p>
+            </div>
+            <p class="combo">Combo Café Expresso</p>
+            <button class="card-pagar-promocao">Comprar</button>
+          </div>
+  
+        </div>
+        <div class="card-promocao2 promocoes">
+          <div class="info-img">
+            <img src="IMG/iced-coffee-plastic-cup-isolated-white-background-217506050-removebg-preview.png" alt="">
+            <img src="IMG/iced-coffee-disposable-go-cup-260nw-1112526923-removebg-preview.png" alt="">
+            <img src="IMG/iced-coffee-on-cup-isolated-260nw-1457637605-removebg-preview.png" alt="">
+          </div>
+          <div class="info">
+            <div class="precos">
+              <p class="riscar">12,99</p>
+              <p class="preco-atual">8,99</p>
+            </div>
+            <p class="combo">Combo Café Gelado sabor Chocolate</p>
+            <button class="card-pagar-promocao">Comprar</button>
+          </div>
+  
+        </div>
+        <div class="card-promocao3 promocoes">
+          <div class="info-img">
+            <img src="IMG/pretoebranco-removebg-preview 1.png" alt="">
+            <img src="IMG/cafemarom.png" alt="">
+          </div>
+          <div class="info">
+            <div class="precos">
+              <p class="riscar">12,99</p>
+              <p class="preco-atual">8,99</p>
+            </div>
+            <p class="combo">Combo Café Caramelo</p>
+            <button class="card-pagar-promocao">Comprar</button>
+          </div>
+        </div>
+      </div>
     </div>
-    
-    <div class="promocao-cards">
-      <div class="card-promocao1 promocoes">
-        <div class="info-img">
-          <img src="IMG/copopretocortado (2).png" alt="cafe" class="card-cafe">
-          <img src="IMG/saco_de_café-removebg-preview (1) 1.png" alt="">
-        </div>
-        <div class="info">
-          <p>8,99</p>
-        <p>Combo Café Expresso</p>
-        </div>
 
-      </div>
-      <div class="card-promocao2 promocoes">
-        <div class="info-img">
-          <img src="IMG/iced-coffee-plastic-cup-isolated-white-background-217506050-removebg-preview.png" alt="">
-          <img src="IMG/iced-coffee-disposable-go-cup-260nw-1112526923-removebg-preview.png" alt="">
-        </div>
-        <div class="info">
-          <p>8,99</p>
-          <p>Combo Café Gelado sabor Chocolate</p>
-        </div>
-
-      </div>
-      <div class="card-promocao3 promocoes">
-        <div class="info-img">
-          <img src="IMG/pretoebranco-removebg-preview 1.png" alt="">
-          <img src="IMG/cafemarom.png" alt="">
-        </div>
-        <div class="info">
-          <p>8,99</p>
-          <p>Combo Café Caramelo</p>
-        </div>
-      </div>
-
-    </div>
   </section>
-  <footer></footer>
+  <footer>
+    <div class="contato">
+      <p>Contate-nos</p>
+      <div class="caixas">
+        <input type="text" placeholder="Nome">
+        <input type="text" placeholder="gmail">
+        <input type="text" placeholder="Descreva sua mensagem">
+        <button type="submit" class="enviar">Enviar</button>
+      </div>
+    </div>
+    <div class="info-contato">
+      <div class="horario">
+        <p class="titulo">Horário de Funcionamento</p>
+        <p>Sabado e Domingo - 09h - 14:00h</p>
+        <p>Segunda a Sexta - 09h - 17:00h</p> 
+      </div>
+      <div class="endereco">
+        <p class="titulo">Endereço</p>
+        <p>Rua Boa Esperança, 253, Jardim Novo Horizonte, Jandira</p>
+      </div>
+      <div class="suporte">
+        <p class="titulo">Suporte</p>
+        <p>Newcafferine@gmail.com</p>
+        <p>(11) 98547-4587</p>
+      </div>
+      <div class="icones">
+        <i class="fa-brands fa-twitter"></i>
+        <i class="fa-brands fa-linkedin-in"></i>
+        <i class="fa-brands fa-instagram"></i>
+      </div>
+    </div>
+  </footer>
 </body>
 
 </html>
