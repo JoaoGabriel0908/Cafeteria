@@ -9,7 +9,8 @@
   <link rel="stylesheet" href="./CSS/main.css" />
   <link rel="stylesheet" href="CSS/style.css" />
   <script src="https://kit.fontawesome.com/d0d3619a1c.js" crossorigin="anonymous"></script>
-  <script src="main.js" defer></script>
+  <script src="./Javascript/main.js" defer></script>
+  <script src="./Javascript/animacao.js" defer></script>
   <title>Cafeteria</title>
 </head>
 
@@ -27,34 +28,66 @@
         </ul>
       </nav>
     </div>
-    <div class="image">
-      <div class="texto">
-        <div class="texto-titulo">Titulo</div>
-        <div class="texto-subtitulo">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque
-          sint in quae, placeat culpa laudantium suscipit nisi aspernatur ut?
-          Omnis aliquam voluptas modi ab possimus molestias iste neque
-          repudiandae assumenda.
-        </div>
-      </div>
     </div>
-  </header>
-  <section class="container">
-    <div class="lado-esquerdo">
-      <div>
-        <p>Café Quentes</p>
-        <div class="sobre">
-          <img src="IMG/cubos-de-gelo 1.png" alt="" />
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel aut
-          possimus sit facilis, illum at, alias non perspiciatis quia, quae
-          assumenda autem nesciunt voluptatibus.
-        </div>
-      </div>
+    <div class="content">
 
-      <div>
+      <div class="slides">
+        <input type="radio" name="slide" id="slide1" checked>
+        <input type="radio" name="slide" id="slide2">
+
+        <div class="slide slide1">
+          <div class="image1 image" id="slide">
+            <div class="texto" >
+              <div class="texto-titulo">Titulo</div>
+              <div class="texto-subtitulo">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque
+                sint in quae, placeat culpa laudantium suscipit nisi aspernatur ut?
+                Omnis aliquam voluptas modi ab possimus molestias iste neque
+                repudiandae assumenda.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide slide2">
+          <div class="image2 image" id="slide">
+              <div class="texto" >
+              <div class="texto-titulo">Titulo</div>
+              <div class="texto-subtitulo">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque
+                sint in quae, placeat culpa laudantium suscipit nisi aspernatur ut?
+                Omnis aliquam voluptas modi ab possimus molestias iste neque
+                repudiandae assumenda.
+              </div>
+            </div>
+          </div> 
+        </div>
+
+        <div class="navigation">
+          <label for="slide1" class="bar"></label>
+          <label for="slide2" class="bar"></label>
+        </div>
+    </div>
+
+    </header>
+    <section class="container">
+      <div class="lado-esquerdo">
+        <div>
+          <p>Café Quentes</p>
+          <div class="sobre">
+            <img src="IMG/xicara-de-cafe (2) 1.png" alt="" />
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel aut
+            possimus sit facilis, illum at, alias non perspiciatis quia, quae
+            assumenda autem nesciunt voluptatibus.
+          </div>
+        </div>
+  
+        <div>
+    </div>
+    <div>
         <p>Café Especiais</p>
         <div class="sobre">
-          <img src="IMG/cubos-de-gelo 1.png" alt="" />
+          <img src="IMG/xicara-de-cafe (3) 1.png" alt="" />
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatum
           eveniet doloremque officiis ducimus nulla animi delectus, labore
           odit cupiditate id
@@ -84,7 +117,7 @@
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel aut
           possimus sit facilis, illum at, alias non perspiciatis quia, quae
           assumenda autem nesciunt.
-          <img src="IMG/cubos-de-gelo 1.png" alt="" />
+          <img src="IMG/xicara-de-cafe (2) 1.png" alt="" />
         </div>
       </div>
 
@@ -94,7 +127,7 @@
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel aut
           possimus sit facilis, illum at, alias non perspiciatis quia, quae
           assumenda autem nesciunt .
-          <img src="IMG/cubos-de-gelo 1.png" alt="" />
+          <img src="IMG/xicara-de-cafe (3) 1.png" alt="" />
         </div>
       </div>
 
@@ -110,7 +143,11 @@
     </div>
   </section>
   <section class="color-categorias">
-    <p class="titulo">Top Categorias</p>
+    <div class="opcoes-categorias">
+      <p class="titulo">Top Categorias</p>
+      <i class="fa-solid fa-bars"></i>
+      
+    </div>
     <div class="categorias">
       <div>
         <p>Cafés Quentes</p>
@@ -125,7 +162,6 @@
         <img src="IMG/cafe-gelado 1.png" alt="" />
       </div>
     </div>
-    <button>Mais Categorias</button>
   </section>
 
   <section class="produtos">
@@ -218,8 +254,8 @@
       <p>Contate-nos</p>
       <div class="caixas">
         <input type="text" placeholder="Nome">
-        <input type="text" placeholder="gmail">
-        <input type="text" placeholder="Descreva sua mensagem">
+        <input type="text" placeholder="Email">
+        <textarea placeholder="Descreva sua mensagem" name="" id="" cols="30" rows="10"></textarea>
         <button type="submit" class="enviar">Enviar</button>
       </div>
     </div>

@@ -14,14 +14,69 @@ header {
   color: var(--marrom-escuro);
   padding: 20px 0;
 }
-header .image {
+.content{
+  height: 500px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+}
+.navigation{
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translate(-50%);
+  display: flex;
+  justify-content: center;
+}
+.bar{
+  width: 70px;
+  height: 17px;
+  margin: 6px;
+  border: 2px solid #fff;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: .4s;
+}
+.bar:hover{
+  background-color: #fff;
+}
+input[name="slide"]{
+  display: none;
+}
+.slides{
+  display: flex;
+  width: 200%;
+  height: 100%;
+}
+.slide{
+  height: 100%;
+  width: 100vw;
+  transition: .6s;
+}
+#slide1:checked ~ .slide1{
+  margin-left: 0%;
+}
+#slide2:checked ~ .slide1{
+  margin-left: -100vw;
+}
+ header .image1{
   background-image: url(../IMG/coffe.png);
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
   height: 500px;
   width: 100%;
-}
+  
+} 
+ header .image2{
+  background-image: url(../IMG/shawnanggg-nmpW_WwwVSc-unsplash.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  height: 500px;
+  width: 100%;
+} 
 header .image .texto{
   color: aliceblue;
   margin: auto;
