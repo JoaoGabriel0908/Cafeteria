@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./CSSCMS/reset.css">
-    <link rel="stylesheet" href="./CSSCMS/autenticacao.css">
+    <link rel="stylesheet" href="../CSSCMS/reset.css">
+    <link rel="stylesheet" href="../CSSCMS/autenticacao.css">
     <title>Dashboard</title>
 </head>
 <body>
@@ -16,7 +16,7 @@
                 <p class="gerenciamento">Gerenciamento de Conteúdo do Site</p>
             </div>
             <div class="imagem">
-                <img src="./IMGs/coffee-cup.png" alt="" width="100px" height="100px">
+                <img src="../IMGs/coffee-cup.png" alt="" width="100px" height="100px">
             </div>
         </div>   
     </header>
@@ -24,25 +24,27 @@
         <div class="menu">
             <div class="administradores">
                 <div>
-                    <img src="./IMGs/coffee (1).png" alt="">
+                    <img src="../IMGs/coffee (1).png" alt="">
                     <p>Adm. de Produtos</p>
                 </div>
                 <div>
-                    <img src="./IMGs/coffee.png" alt="">
+                    <img src="../IMGs/coffee.png" alt="">
                     <p>Adm. de Categorias</p>
                 </div>
                 <div>
-                    <img src="./IMGs/livros-de-contato.png" alt="">
+                    <a href="/joao/cafeteria/cmms/contatos.php">
+                    <img src="../IMGs/livros-de-contato.png" alt="">
+                    </a>
                     <p>Contatos</p>
                 </div>
                 <div>
-                    <img src="./IMGs/perfil.png" alt="">
+                    <img src="../IMGs/perfil.png" alt="">
                     <p>Usuários</p>
                 </div>
             </div>
             <div class="logout">
                 <p class="bem-vindo">Bem-Vindo Nome do Usuário</p>
-                <img src="./IMGs/sair.png" alt="">
+                <img src="../IMGs/sair.png" alt="">
                 <p>Logout</p>
             </div>
         </div>   
