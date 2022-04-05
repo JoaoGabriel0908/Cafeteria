@@ -15,7 +15,7 @@ header {
   padding: 20px 0;
 }
 .content{
-  height: 500px;
+  height: 70vh;
   width: 100%;
   overflow: hidden;
   position: relative;
@@ -65,7 +65,7 @@ input[name="slide"]{
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  height: 500px;
+  height: inherit;
   width: 100%;
   
 } 
@@ -74,7 +74,7 @@ input[name="slide"]{
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  height: 500px;
+  height: inherit;
   width: 100%;
 } 
 header .image .texto{

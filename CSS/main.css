@@ -16,7 +16,7 @@
 
   /* Seção Sobre */
 .container{
-    max-width: 1300px;
+    max-width: 1150px;
     width: 100%;
     margin: auto;
     display: flex;
@@ -28,13 +28,19 @@
     height: 300px;
     position: relative;
     margin: auto auto;
-
+    animation: subir 2s ease infinite alternate;
 }
 .container .image img{
     width: 100%;
     height: 100%;
     object-fit: contain;
     margin: auto;
+}
+
+@keyframes subir {
+    to{
+        transform: translateY(-40px);
+    }
 }
 
 /*  Sobre Lado esquerdo e direito */
@@ -49,6 +55,7 @@
     margin-bottom: 20px;
     display: flex;
     flex-direction: column;
+    height: 150px;
 }
 .lado-esquerdo div img,
 .lado-direito div img{
@@ -121,6 +128,14 @@ section.color-categorias .titulo{
     margin-left: auto;
     text-align: end;
     left: auto;
+    align-items: center;
+}
+.fa-bars p{
+    font-size: 18px;
+    align-items: center;
+    text-align: center;
+    margin-left: 5px;
+    font-family: var(--fonte-destacado);
 }
 div.categorias{
     max-width: 1300px;
@@ -157,7 +172,13 @@ div.categorias{
 section.produtos{
     max-width: 1300px;
     margin: auto;
+    height: auto;
+    animation:scale-up-ver-top .4s cubic-bezier(.39,.575,.565,1.000) both;
 }
+
+@keyframes scale-up-ver-top
+{0%
+    {transform:scaleY(.4);transform-origin:100% 0}100%{transform:scaleY(1);transform-origin:100% 0}}
 
 .card-container{
     padding: 50px 0;
@@ -274,17 +295,23 @@ button.info:hover{
 /* Seção Promoção */
 section.promocao{
     max-width: 1300px;
+    width: 100%;
+    margin: auto;
+}
+div.promocao-total{
+    width: 100%;
+    max-width: 1300px;
     margin: auto;
     margin-bottom: 100px;
-}
-section.promocao-total{
-    width: 100%;
 }
 div.promocao-cards{
     display: flex;
     flex-direction: row;
     margin: auto;
-    justify-content: space-evenly;
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 50px;
 }
 .promocao-texto{
     width: 400px;

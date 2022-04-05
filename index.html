@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="CSS/header.css" />
   <link rel="stylesheet" href="./CSS/main.css" />
   <link rel="stylesheet" href="CSS/style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <script src="https://kit.fontawesome.com/d0d3619a1c.js" crossorigin="anonymous"></script>
   <script src="./Javascript/main.js" defer></script>
   <script src="./Javascript/animacao.js" defer></script>
@@ -15,8 +16,8 @@
 </head>
 
 <body>
-  <header>
-    <div class="menu">
+  <header >
+    <div class="menu" >
       <div class="logo">New Caffeine</div>
       <nav class="navegacao">
         <ul>
@@ -29,7 +30,7 @@
       </nav>
     </div>
     </div>
-    <div class="content">
+    <div class="content" >
 
       <div class="slides">
         <input type="radio" name="slide" id="slide1" checked>
@@ -72,19 +73,18 @@
     </header>
     <section class="container">
       <div class="lado-esquerdo">
-        <div>
+        <div data-aos="fade-right">
           <p>Café Quentes</p>
           <div class="sobre">
             <img src="IMG/xicara-de-cafe (2) 1.png" alt="" />
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel aut
-            possimus sit facilis, illum at, alias non perspiciatis quia, quae
-            assumenda autem nesciunt voluptatibus.
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatum
+            eveniet doloremque officiis ducimus nulla animi delectus, labore
+            odit cupiditate id
           </div>
         </div>
   
-        <div>
-    </div>
-    <div>
+        
+      <div data-aos="fade-right">
         <p>Café Especiais</p>
         <div class="sobre">
           <img src="IMG/xicara-de-cafe (3) 1.png" alt="" />
@@ -94,49 +94,50 @@
         </div>
       </div>
 
-      <div>
+      <div data-aos="fade-right">
         <p>Café Gelados</p>
         <div class="sobre">
           <img src="IMG/cubos-de-gelo 1.png" alt="" />
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus
-          dolorum minus tempora, earum aperiam optio nostrum similique non.
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatum
+          eveniet doloremque officiis ducimus nulla animi delectus, labore
+          odit cupiditate id
         </div>
       </div>
     </div>
-    <div class="bem-vindo">
-      <p class="bem-vindo1">Bem-Vindo ao New Caffeine</p>
+    <div class="bem-vindo" data-aos="fade-up">
+      <p class="bem-vindo1" >Bem-Vindo ao New Caffeine</p>
       <p class="bem-vindo2">Conheça mais sobre nossa cafeteria</p>
     </div>
     <div class="image">
       <img src="IMG/copopretocortado (2).png" alt="" />
     </div>
     <div class="lado-direito">
-      <div>
+      <div data-aos="fade-left">
         <p>Cafés Quentes</p>
         <div class="sobre">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel aut
-          possimus sit facilis, illum at, alias non perspiciatis quia, quae
-          assumenda autem nesciunt.
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatum
+          eveniet doloremque officiis ducimus nulla animi delectus, labore
+          odit cupiditate id
           <img src="IMG/xicara-de-cafe (2) 1.png" alt="" />
         </div>
       </div>
 
-      <div>
+      <div data-aos="fade-left">
         <p>Cafés Especiais</p>
         <div class="sobre">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel aut
-          possimus sit facilis, illum at, alias non perspiciatis quia, quae
-          assumenda autem nesciunt .
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatum
+          eveniet doloremque officiis ducimus nulla animi delectus, labore
+          odit cupiditate id
           <img src="IMG/xicara-de-cafe (3) 1.png" alt="" />
         </div>
       </div>
 
-      <div>
+      <div data-aos="fade-left">
         <p>Cafés Gelados</p>
         <div class="sobre">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel aut
-          possimus sit facilis, illum at, alias non perspiciatis quia, quae
-          assumenda autem nesciunt .
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatum
+          eveniet doloremque officiis ducimus nulla animi delectus, labore
+          odit cupiditate id
           <img src="IMG/cubos-de-gelo 1.png" alt="" />
         </div>
       </div>
@@ -145,7 +146,7 @@
   <section class="color-categorias">
     <div class="opcoes-categorias">
       <p class="titulo">Top Categorias</p>
-      <i class="fa-solid fa-bars"></i>
+      <i class="fa-solid fa-bars"> <p>Selecione as categorias</p> </i>
       
     </div>
     <div class="categorias">
@@ -165,7 +166,7 @@
   </section>
 
   <section class="produtos">
-    <div class="card-container">
+    <div class="card-container" data-aos="fade-up">
       <div class="card">
 
       </div>
@@ -281,6 +282,12 @@
       </div>
     </div>
   </footer>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+    });
+  </script>
 </body>
 
 </html>
