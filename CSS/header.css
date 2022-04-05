@@ -7,6 +7,8 @@
   --fonte-titulo:'Sura', serif;
   --fonte-subtitulo: "SoDo Sans";
   --fonte-texto:"Inter", sans-serif;
+  --fonte-apresentacao: 'Recursive', sans-serif;
+  --fonte-destacado:'Readex Pro', sans-serif;
 }
 
 header {
@@ -128,12 +130,13 @@ header .image .texto-subtitulo{
   
 }
 .menu ul a{
-  font-family: var(--fonte-texto);
+  font-family: var(--fonte-destacado);
   font-style: medium;
   font-size: 18px;
   color: var(--marrom-escuro);
   padding: 15px 10px;
   border-radius: 10px;
+  font-weight: bold;
 }
 .menu ul a:hover{
   color:white;
