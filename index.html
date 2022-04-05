@@ -35,6 +35,11 @@
         <input type="radio" name="slide" id="slide1" checked>
         <input type="radio" name="slide" id="slide2">
 
+        <!-- <div>
+          <i class="fa-solid fa-arrow-left-long" for="slide1"></i>
+          <i class="fa-solid fa-arrow-right-long" for="slide2"></i>
+        </div> -->
+      
         <div class="slide slide1">
           <div class="image1 image" id="slide">
             <div class="texto" >
@@ -52,7 +57,7 @@
         <div class="slide slide2">
           <div class="image2 image" id="slide">
               <div class="texto" >
-              <div class="texto-titulo">Titulo</div>
+              <div class="texto-titulo">Nova Cafeteria!</div>
               <div class="texto-subtitulo">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque
                 sint in quae, placeat culpa laudantium suscipit nisi aspernatur ut?
@@ -70,7 +75,7 @@
     </div>
 
     </header>
-    <section class="container">
+    <section class="container" id="sobre">
       <div class="lado-esquerdo">
         <div data-aos="fade-right">
           <p>Café Quentes</p>
@@ -180,15 +185,15 @@
       </div>
     </div>
   </section>
-
-  <section class="produtos">
+ 
+  <section class="produtos" id="produtos">
     <div class="card-container" data-aos="fade-up">
       <div class="card">
 
       </div>
     </div>
   </section>
-  <section class="color-destaque">
+  <section class="color-destaque" data-aos="fade-left">
     <div class="destaque">
       <div class="destaque-imagem">
         <img src="IMG/coffee-g6b8bc839a_640-removebg-preview (2).png" alt="">
@@ -208,7 +213,7 @@
     </div>
   </section>
 
-  <section class="promocao">
+  <section class="promocao" id="promocoes" data-aos="fade-up">
 
     <div class="promocao-total">
       <div class="promocao-texto">
@@ -270,7 +275,7 @@
 
   </section>
   <footer>
-    <div class="contato">
+    <div class="contato" id="contatos">
       <p>Contate-nos</p>
       <div class="caixas">
         <input type="text" placeholder="Nome">

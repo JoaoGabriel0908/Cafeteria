@@ -12,14 +12,14 @@
 header {
   width: 100%;
   color: var(--marrom-escuro);
-  padding: 20px 0;
 }
 .content{
-  height: 70vh;
+  height: 80vh;
   width: 100%;
   overflow: hidden;
   position: relative;
   display: flex;
+  /* margin-top: 50px; */
 }
 .navigation{
   position: absolute;
@@ -67,14 +67,20 @@ input[name="slide"]{
   background-size: cover;
   height: inherit;
   width: 100%;
-  
+  background-color: rgba(0, 0, 0, 0);
+  background-blend-mode: darken;
+  background-attachment: fixed;
 } 
  header .image2{
   background-image: url(../IMG/shawnanggg-nmpW_WwwVSc-unsplash.jpg);
-  background-repeat: no-repeat;
+  background-color: rgba(0, 0, 0, 0.452);
+  background-blend-mode: darken;
   background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   background-size: cover;
   height: inherit;
+  
   width: 100%;
 } 
 header .image .texto{
@@ -106,26 +112,33 @@ header .image .texto-subtitulo{
   align-items: center;
   flex-direction: row;
   margin: auto;
-  margin-bottom: 20px;
+  /* position: fixed;
+  top: 50;
+  left: 0;
+  width: 100%;*/
+  padding: 20px 0;
+  
 }
 .menu ul {
   display: flex;
   flex-direction: row;
-  gap: 60px;
+  gap: 50px;
   list-style: none;
   color: var(--marrom-escuro);
+  
 }
 .menu ul a{
   font-family: var(--fonte-texto);
   font-style: medium;
   font-size: 18px;
   color: var(--marrom-escuro);
-  padding-bottom: 20px;
+  padding: 15px 10px;
+  border-radius: 10px;
 }
 .menu ul a:hover{
-  color:var(--preto);
-  transition: .2s;
-  border-bottom: 2px solid var(--preto);
+  color:white;
+  transition: .4s;
+  background-color: var(--marrom-escuro);
 }
 .logo{
   font-size: 1.5rem;
