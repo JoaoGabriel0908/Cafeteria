@@ -120,6 +120,7 @@ section.color-categorias .titulo{
     margin-bottom: 20px;
     position: relative;
 }
+
 .fa-bars{
     display: flex;
     margin-right: auto;
@@ -129,13 +130,40 @@ section.color-categorias .titulo{
     text-align: end;
     left: auto;
     align-items: center;
+    flex-wrap: nowrap;
+    bottom: 0px;
 }
 .fa-bars p{
     font-size: 18px;
     align-items: center;
     text-align: center;
-    margin-left: 5px;
     font-family: var(--fonte-destacado);
+    float: right;
+    padding: 10px 5px;
+}
+.checkbtn{
+    cursor: pointer;
+    transition: .6s ease;
+}
+#check{
+    display: none;
+}
+.checkbtn:hover{
+    color: aliceblue;
+}
+#check:checked ~ div.categorias1{
+    left: 10vw;
+}
+
+div.categorias1{
+    background-color: #0B7428;
+    left: -100vw;
+    position: fixed;
+    width: 80%;
+    top: 80px;
+    transition: all .5s;
+    margin: auto;
+    display: flex;
 }
 div.categorias{
     max-width: 1300px;
@@ -167,6 +195,15 @@ div.categorias{
     flex-direction: column;
     gap: 10px;
     max-width: 1300px;
+    transition: .5s;
+}
+
+.categorias div:hover{
+    background-color: aliceblue;
+    padding: 2px 5px;
+    cursor: pointer;
+    border-radius: 20px;
+    color: var(--marrom-escuro);
 }
 
 section.produtos{
@@ -199,7 +236,6 @@ section.produtos{
     padding: 8px;
 }
 .card:hover{
-    cursor: pointer;
     box-shadow: 0px 0px 20px #000000;
     transition: box-shadow 1s;
 }
@@ -236,6 +272,8 @@ section.produtos{
     width: 75%;
     font-family: var(--fonte-texto);
     font-size: 1.6rem;
+    cursor: pointer;
+    transition: .4s;
 }
 
 .color-destaque{
@@ -331,6 +369,7 @@ section.promocao div.promocoes{
     align-items: center;
     flex-direction: column;
     border: 1px solid var(--preto);
+    position: relative;
 }
 .promocao .info-img{
     height: 250px;
@@ -399,8 +438,21 @@ div.precos{
     cursor: pointer;
     transition: .5s;
 }
-.card-pagar-promocao:hover{
-    box-shadow: 0px 0 5px 5px #000;
+section.promocao div.promocoes:hover{
+    box-shadow: 0px 0px 20px #000000;
+    transition: box-shadow 1s;
+}
+.promocoes span{
+    position: absolute;
+    padding: 10px;
+    border-radius: 50%;
+    color: white;
+    background-color: #0B7428;
+    font-size: 18px;
+    display: flex;
+    align-items: flex-start;
+    left: 5px;
+    margin: 10px;
 }
 
 /* Seção Contatos */
@@ -491,4 +543,10 @@ div .icones i{
     font-size: 50px;
     margin-left: 20px;
     margin-right: 20px;
+}
+button.card-pagar-promocao:hover,
+button.card-pagar:hover{
+    background-color: rgb(0, 0, 0,0);
+    color: var(--confirmar);
+    box-sizing: unset 0 0 0 3px var(--confirmar);
 }
