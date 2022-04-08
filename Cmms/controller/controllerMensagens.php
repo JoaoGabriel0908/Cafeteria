@@ -1,4 +1,5 @@
 <?php
+// Import do arquivo que vai buscar os dados no BD
 require_once('model/bd/mensagens.php');
 
 function excluirMensagem ($id){
@@ -21,9 +22,6 @@ function excluirMensagem ($id){
     }
 }
 function listarMensagens (){
-
-// Import do arquivo que vai buscar os dados no BD
-
 
 // Chama a função que vai buscar os dados no BD
 $dados = selectAllMensagens();

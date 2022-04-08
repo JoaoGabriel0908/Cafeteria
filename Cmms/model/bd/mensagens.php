@@ -2,8 +2,8 @@
 
 require_once('conexaoMySql.php');
 
-function deleteMensagem($id){
-
+function deleteMensagem($id)
+{
     // Declaração da Variavel para utilizar no return desta função
     $statusRepostas = (boolean) false;
 
@@ -38,28 +38,28 @@ function selectAllMensagens()
 
     if($result)
     {
-    // Mysql_fetch_assoc() - Permite converter os dados do BD
-        // em um array para manipulação
-    // Nesta repetição estamos, convertendo os dados do BD em um array ($rsDados),
-        // além de o próprio while conseguir gerenciar a Quantidade de 
-        // vezes que deverá ser feita a repetição.
-        $cont = 0;
-    while ($rsDados = mysqli_fetch_assoc($result))
-    {
-        // Cria um array com os dados do BD baseado em índice e em chave
-        $arrayDados[$cont] = array(
-            "nome"          => $rsDados['nome'],
-            "email"         => $rsDados['email'],
-            "mensagem"      => $rsDados['mensagem']
-        );
-        $cont++;
+        // Mysql_fetch_assoc() - Permite converter os dados do BD
+            // em um array para manipulação
+        // Nesta repetição estamos, convertendo os dados do BD em um array ($rsDados),
+            // além de o próprio while conseguir gerenciar a Quantidade de 
+            // vezes que deverá ser feita a repetição.
+            $cont = 0;
+        while ($rsDados = mysqli_fetch_assoc($result))
+        {
+            // Cria um array com os dados do BD baseado em índice e em chave
+            $arrayDados[$cont] = array(
+                "nome"          => $rsDados['nome'],
+                "email"         => $rsDados['email'],
+                "mensagem"      => $rsDados['mensagem']
+            );
+            $cont++;
+        }
+
+        // Solicita o fechamento da conexão com o Banco de Dados
+        fecharConexaoMysql($conexao);
+
+        return $arrayDados;
     }
-
-    // Solicita o fechamento da conexão com o Banco de Dados
-    fecharConexaoMysql($conexao);
-
-    return $arrayDados;
-}
 
 }
 ?>

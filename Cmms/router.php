@@ -11,8 +11,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' || $_SERVER['REQUEST_METHOD'] == 'GET'){
     $componente = strtoupper($_GET['componente']);
     $action = strtoupper($_GET['action']);
 
-            if($action == 'DELETAR')
-                {
+        switch($componente)
+            {
+                case 'CONTATOS';
+                    // Import da controller contatos
+                    require_once('./controller/controllerMensagens.php');
+
+                if($action == 'DELETAR')
+                    {
                         // Recebe o id do registro que deverá ser excluído,
                         // que foi enviado pela URL do link da imagem do exluir
                         // que foi adicionado na Index.
@@ -37,6 +43,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' || $_SERVER['REQUEST_METHOD'] == 'GET'){
                             </script>");
                         };
                     }
-                }
+                break;
+            }
+        }
                 
 ?>

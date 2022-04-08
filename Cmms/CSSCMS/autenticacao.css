@@ -79,6 +79,7 @@ section.principal{
     flex-grow: 1;
     max-height: 500px;
     height: auto;
+    background-color: blueviolet;
 }
 
 /* Footer */
@@ -95,9 +96,7 @@ footer .copyright{
     margin-right: 30vw;
     margin-left: 30vw;
 }
-footer .desenvolvido{
-    
-}
+
 table{
     height: 500px;
     background-color: aquamarine;
