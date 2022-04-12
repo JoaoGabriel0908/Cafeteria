@@ -16,7 +16,9 @@
                 <p class="gerenciamento">Gerenciamento de Conteúdo do Site</p>
             </div>
             <div class="imagem">
+            <a href="./dashboard.php">
                 <img src="./IMGs/coffee-cup.png" alt="" width="100px" height="100px">
+            </a>
             </div>
         </div>   
     </header>
@@ -28,11 +30,13 @@
                     <p>Adm. de Produtos</p>
                 </div>
                 <div>
+                <a href="./categorias.php">
                     <img src="./IMGs/coffee.png" alt="">
+                </a>
                     <p>Adm. de Categorias</p>
                 </div>
                 <div>
-                    <a href="cafeteria/Cmms/contatos.php">
+                    <a href="./contatos.php">
                     <img src="./IMGs/livros-de-contato.png" alt="">
                     </a>
                     <p>Contatos</p>

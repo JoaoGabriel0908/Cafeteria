@@ -48,6 +48,7 @@ function selectAllMensagens()
         {
             // Cria um array com os dados do BD baseado em índice e em chave
             $arrayDados[$cont] = array(
+                "id"            => $rsDados['idmensagens'],
                 "nome"          => $rsDados['nome'],
                 "email"         => $rsDados['email'],
                 "mensagem"      => $rsDados['mensagem']
