@@ -36,7 +36,6 @@ function insertContato($dadosCategoria){
 
 function selectAllCategorias()
 {
-
     // Abre a conexão 
     $conexao = conexaoMySql();
 
@@ -81,7 +80,7 @@ function selectByIdCategoria($id){
 
     //Script para listar as informações dos contatos
     $sql = "select * from tblcategoria where idcategoria =".$id;
-
+    
     // Executa o Script para listar todos os dados do Banco de dados
     $result = mysqli_query($conexao, $sql);
 
@@ -119,7 +118,7 @@ function uptadeCategoria($dadosCategoria){
     // Montando o script para enviar para o BD
     $sql = "update tblcategoria set
                 nome           = '".$dadosCategoria['nome']."',
-                icone       = '".$dadosCategoria['icone']."'
+                icone          = '".$dadosCategoria['icone']."'
 
             where idcategoria =".$dadosCategoria['id'];
              
@@ -134,5 +133,26 @@ function uptadeCategoria($dadosCategoria){
     fecharConexaoMysql($conexao);
     return $statusRepostas;
     }
+}
+
+function deleteCategoria($id){
+    // Declaração da Variavel para utilizar no return desta função
+    $statusRepostas = (boolean) false;
+
+    // Abre a conexão com o BD
+    $conexao = conexaoMySql();
+
+    // Script para deletar um registro do BD
+    $sql = "delete from tblcategoria where idcategoria=".$id;
+
+    // Valida se o script está correto, sem erro de sintaxe e executa o BD
+    if(mysqli_query($conexao, $sql))
+    {
+        // Valida se o BD teve sucesso na execução do exscript
+        if(mysqli_affected_rows($conexao))
+            $statusRepostas = true;
+    }
+    fecharConexaoMysql($conexao);
+    return $statusRepostas;
 }
 ?>

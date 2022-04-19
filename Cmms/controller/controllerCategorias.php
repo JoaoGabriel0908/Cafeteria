@@ -49,7 +49,7 @@ function buscarCategoria($id) {
     if($id != 0 && !empty($id) && is_numeric($id))
     {
         // Import do arquivo de contato
-        require_once('./model/bd/categoriasCafe.php');
+        require_once('model/bd/categoriasCafe.php');
 
         // Chama a função na model que vai buscar no BD
         $dados = selectByIdCategoria($id);
@@ -87,7 +87,7 @@ function atualizarCategoria($dadosCategorias, $id){
                         );
     
                         // Require do arquivo da model que faz a conexão direta com o BD
-                        require_once('model/bd/categoriasCafe.php');
+                        require_once('./model/bd/categoriasCafe.php');
                         // Chama a função que fará o update do BD (esta função está na model)
                         if (uptadeCategoria($arrayDados))
                             return true;
@@ -101,6 +101,25 @@ function atualizarCategoria($dadosCategorias, $id){
                     return array('idErro' =>2,
                              'message' => 'Existem campos obrigatórios que não foram preenchidos.');
         }
+}
+
+function excluirCategoria($id){
+    // Validação para verificar se o id tem um número válido
+    if($id != 0 && !empty($id) && is_numeric($id))
+    {
+        // Import do arquivo de contato
+        require_once('model/bd/categoriasCafe.php');
+
+        // Chama a função da model e valida se o retorno foi verdadeiro ou falso
+        if(deleteCategoria($id))
+            return true;
+        else
+            return array('idErro'   => 3,
+                         'message'  => 'O banco de Dados não pode excluir o registro.');
+    }else {
+        return array('idErro'   => 4,
+                    'message'   => 'Não é possível excluir um registro sem informar um id válido');
+    }
 }
 
 ?>

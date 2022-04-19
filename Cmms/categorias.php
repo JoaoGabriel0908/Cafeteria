@@ -8,7 +8,7 @@ $form = (string) "router.php?componente=categorias&action=inserir";
 // Valida se a utilização da variavel de sessão esta ativa no servidor
 if (session_status()) {
     // Valida se a variavel de sessão dadosCategorias não esta vazia
-    if (!empty($_SESSION['dadosCategorias'])) {
+    if (!empty($_SESSION['dadosCategoria'])) {
         $id             = $_SESSION['dadosCategoria']['id'];
         $nome           = $_SESSION['dadosCategoria']['nome'];
         $icone          = $_SESSION['dadosCategoria']['icone'];
@@ -87,12 +87,12 @@ if (session_status()) {
         </div>
         <div id="cadastroInformacoes">
             <!-- Enviando variaveis para o router -->
-            <form action="<?= $form ?>" name="frmCadastro" method="post">
+            <form action="<?=$form?>" name="frmCadastro" method="post">
                 <div class="cadastroInformacoesPessoais">
                     <label> Nome: </label>
                 </div>
                 <div class="cadastroEntradaDeDados">
-                    <input type="text" name="txtNome" value="<?= isset($nome) ? $nome : null ?>" placeholder="Digite seu Nome" maxlength="100">
+                    <input type="text" name="txtNome" value="<?=isset($nome)?$nome:null?>" placeholder="Digite sua Categoria" maxlength="100">
                 </div>
         </div>
 
@@ -101,7 +101,7 @@ if (session_status()) {
                 <label> icone: </label>
             </div>
             <div class="cadastroEntradaDeDados">
-                <input type="text" name="txtIcone" value="<?= isset($icone) ? $icone : null ?>">
+                <input type="text" name="txtIcone" value="<?=isset($icone)?$icone:null?>">
             </div>
             <div class="enviar">
                 <div class="enviar">
@@ -130,7 +130,7 @@ if (session_status()) {
                         <a href="router.php?componente=categorias&action=buscar&id=<?= $item['id'] ?>">
                             <img src="img/edit.png" alt="Editar" title="Editar" class="editar">
                         </a>
-                        <a href="router.php?componente=categorias&action=deletar&id=<?= $item['id'] ?>">
+                        <a onclick="return confirm('Deseja realmente excluir a <?=$item['nome']?> categoria?')" href="router.php?componente=categorias&action=deletar&id=<?= $item['id'] ?>">
                             <img src="img/trash.png" alt="Excluir" title="Excluir" class="excluir">
                         </a>
                         <img src="img/search.png" alt="Visualizar" title="Visualizar" class="pesquisar">

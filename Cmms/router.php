@@ -76,6 +76,32 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' || $_SERVER['REQUEST_METHOD'] == 'GET'){
                                 window.history.back();
                             </script>");
                 }
+                elseif($action == 'DELETAR')
+                {
+                    // Recebe o id do registro que deverá ser excluído,
+                        // que foi enviado pela URL do link da imagem do exluir
+                        // que foi adicionado na Index.
+                        $idCategoria = $_GET['id'];
+
+                        // Chama a função de excluir na controller
+                        $resposta = excluirCategoria($idCategoria);
+
+                        if(is_bool($resposta))
+                        {
+                            if($resposta){
+                                echo(" <script>
+                                 alert('Registro exluído com sucesso!');
+                                 window.location.href = 'categorias.php'; 
+                            </script> ");
+                            }
+                        }elseif(is_array($resposta))
+                        {
+                            echo("<script>
+                                alert('".$resposta['message']."');
+                                window.history.back();
+                            </script>");
+                        }
+                }
                 elseif($action == 'BUSCAR')
                 {
                     // Recebe o id do registro que deverá ser excluído,
@@ -85,7 +111,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' || $_SERVER['REQUEST_METHOD'] == 'GET'){
 
                         // Chama a função de excluir na controller
                         $dados = buscarCategoria($idCategoria);
-
+                        
                         // Ativa a utilização de variavel de sessão no servidor
                         session_start();
 
@@ -120,7 +146,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' || $_SERVER['REQUEST_METHOD'] == 'GET'){
 
                         echo(" <script>
                                  alert('Registro atualizado com sucesso!');
-                                 window.location.href = 'index.php'; 
+                                 window.location.href = 'categorias.php'; 
                             </script> ");
                         }
 
@@ -131,6 +157,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' || $_SERVER['REQUEST_METHOD'] == 'GET'){
                                 window.history.back();
                             </script>");
                 }
+            break;
         }
 }
                 
