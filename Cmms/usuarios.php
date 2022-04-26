@@ -70,9 +70,7 @@ if (session_status()) {
                     <p>Contatos</p>
                 </div>
                 <div>
-                    <a href="./usuarios.php">
-                        <img src="./IMGs/perfil.png" alt="">
-                    </a>
+                    <img src="./IMGs/perfil.png" alt="">
                     <p>Usuários</p>
                 </div>
             </div>
@@ -94,18 +92,37 @@ if (session_status()) {
                     <label> Nome: </label>
                 </div>
                 <div class="cadastroEntradaDeDados">
-                    <input type="text" name="txtNome" value="<?= isset($nome) ? $nome : null ?>" placeholder="Digite sua Categoria" maxlength="100">
+                    <input type="text" name="txtNome" value="<?= isset($nome) ? $nome : null ?>" placeholder="Digite seu nome" maxlength="100">
                 </div>
         </div>
 
         <div class="campos">
             <div class="cadastroInformacoesPessoais">
-                <label> Escolha um arquivo : </label>
+                <label> Sobrenome : </label>
             </div>
             <div class="cadastroEntradaDeDados">
-                <input type="file" name="fleFoto" accept=".jpg, .png, .jpeg, .gif">
+                <input type="text" name="txtNome" value="<?= isset($sobrenome) ? $nome : null ?>" placeholder="Digite seu sobrenome" maxlength="100">
             </div>
         </div>
+
+        <div class="campos">
+            <div class="cadastroInformacoesPessoais">
+                <label> Email: </label>
+            </div>
+            <div class="cadastroEntradaDeDados">
+                <input type="tel" name="txtTelefone" value="<?= isset($telefone) ? $telefone : null ?>" placeholder="Digite seu email">
+            </div>
+        </div>
+
+        <div class="campos">
+            <div class="cadastroInformacoesPessoais">
+                <label> Senha: </label>
+            </div>
+            <div class="cadastroEntradaDeDados">
+                <input type="tel" name="txtTelefone" value="<?= isset($telefone) ? $telefone : null ?>" placeholder="Digite sua senha">
+            </div>
+        </div>
+
         <div class="enviar">
             <div class="enviar">
                 <input type="submit" name="btnEnviar" value="Salvar">
@@ -127,7 +144,9 @@ if (session_status()) {
 
                 <tr id="tblLinhas">
                     <td class="tblColunas registros"><?= $item['nome'] ?></td>
-                    <td class="tblColunas registros"><img src="arquivos/<?= $item['icone'] ?>" class="foto"></td>
+                    <td class="tblColunas registros"><?= $item['sobrenome'] ?></td>
+                    <td class="tblColunas registros"><?= $item['email'] ?></td>
+                    <td class="tblColunas registros"><?= $item['senha'] ?></td>
 
                     <td class="tblColunas registros">
                         <a href="router.php?componente=categorias&action=buscar&id=<?= $item['id'] ?>">

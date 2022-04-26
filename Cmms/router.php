@@ -54,8 +54,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' || $_SERVER['REQUEST_METHOD'] == 'GET'){
                 if($action == 'INSERIR')
                 {
 
-                    // Chama a função de inserir na controller 
-                    $resposta = inserirCategorias($_POST);
+                    if(isset($_FILES) && !empty($_FILES))
+                    {
+                        // Chama a função de inserir na controller
+                        $resposta = inserirCategorias($_POST, $_FILES);
+                    } else {
+                        $resposta = inserirCategorias($_POST, null);
+                    }
 
                     // Valida o tipo de dado que retornou
                     if(is_bool($resposta)) // Se for boleano:

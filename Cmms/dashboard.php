@@ -42,7 +42,9 @@
                     <p>Contatos</p>
                 </div>
                 <div>
-                    <img src="./IMGs/perfil.png" alt="">
+                    <a href="./usuarios.php">
+                        <img src="./IMGs/perfil.png" alt="">
+                    </a>
                     <p>Usuários</p>
                 </div>
             </div>

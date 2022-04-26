@@ -1,24 +1,45 @@
 <?php
 
-function inserirCategorias($dadosCategorias){
+function inserirCategorias($dadosCategorias, $file){
+
+    $nomeFoto = (string) null;
+
     // Validação para verificar se o objeto esta vazio 
     if(!empty($dadosCategorias)){
 
         // Validação de caixa vazia dos elementos nome,
         if(!empty($dadosCategorias['txtNome']))
             {
+                // Validação para identificar se chegou um arquivo para upload
+                if($file != null)
+                {
+                    // Import da função de upload
+                    require_once('./modulo/upload.php');
+                    $nomeFoto = uploadFile($file['fleFoto']);
+
+                    // Chama a função de upload
+                    if(is_array($nomeFoto))
+                    {
+                        // Caso aconteça algum erro no processo de upload, a função irá retornar
+                        // um array com a possivel mensagem de erro. Esse array será retornado para
+                        // a router e ela irá exibir a mensagem na para o usuário
+                        return $nomeFoto;
+                    }
+    
+                }
                 // Criação do array de dados que será encaminhado a model
                 // para inserir no banco de dados, é importante
                 // criar este array conforme as necessidades de manipulação do BD
                 // OBS: Criar as chaves do array conforme os nomes dos atributos do BD
                 $arrayDados = array(
                     "nome"          => $dadosCategorias['txtNome'],
-                    "icone"      => $dadosCategorias['txtIcone'],
+                    "icone"          => $nomeFoto
                 );
+
                 // Require do arquivo da model que faz a conexão direta com o BD
                 require_once('./model/bd/categoriasCafe.php');
                 // Chama a função que fará o insert do BD (esta função está na model)
-                if (insertContato($arrayDados))
+                if(insertCategoria($arrayDados))
                     return true;
                 else
                     return array('idErro' => 1, 

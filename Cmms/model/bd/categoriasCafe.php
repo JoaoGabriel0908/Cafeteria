@@ -3,7 +3,8 @@
 require_once('conexaoMySql.php');
 
 // Função para realizar o insert no BD
-function insertContato($dadosCategoria){
+function insertCategoria($dadosCategoria)
+{
 
     $statusRepostas = (boolean) false;
 
@@ -18,7 +19,7 @@ function insertContato($dadosCategoria){
             ('".$dadosCategoria['nome']."',
             '".$dadosCategoria['icone']."');";
 
-            echo($sql);
+        echo($sql);
 
     // Comando que executa o script no banco de dados
         // Validação para verificar se o script sql está correto 
@@ -73,7 +74,8 @@ function selectAllCategorias()
 }
 
 // Função para buscar um contato no BD através do id do registro
-function selectByIdCategoria($id){
+function selectByIdCategoria($id)
+{
 
     // Abre a conexão 
     $conexao = conexaoMySql();
@@ -108,7 +110,8 @@ function selectByIdCategoria($id){
 
 }
 
-function uptadeCategoria($dadosCategoria){
+function uptadeCategoria($dadosCategoria)
+{
 
     $statusRepostas = (boolean) false;
 
@@ -135,7 +138,8 @@ function uptadeCategoria($dadosCategoria){
     }
 }
 
-function deleteCategoria($id){
+function deleteCategoria($id)
+{
     // Declaração da Variavel para utilizar no return desta função
     $statusRepostas = (boolean) false;
 
