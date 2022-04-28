@@ -3,19 +3,21 @@
 // Essa variavel foi criada para diferenciar no action do formulário qual
 // a ação deveria ser levada para a router (inserir ou editar).
 // Nas condições abaixo mudamos o action da variacel para a ação de editar.
-$form = (string) "router.php?componente=categorias&action=inserir";
+$form = (string) "router.php?componente=usuarios&action=inserir";
 
 // Valida se a utilização da variavel de sessão esta ativa no servidor
 if (session_status()) {
     // Valida se a variavel de sessão dadosCategorias não esta vazia
-    if (!empty($_SESSION['dadosCategoria'])) {
-        $id             = $_SESSION['dadosCategoria']['id'];
-        $nome           = $_SESSION['dadosCategoria']['nome'];
-        $icone          = $_SESSION['dadosCategoria']['icone'];
+    if (!empty($_SESSION['dadosUsuario'])) {
+        $id             = $_SESSION['dadosUsuario']['id'];
+        $nome           = $_SESSION['dadosUsuario']['nome'];
+        $sobrenome      = $_SESSION['dadosUsuario']['sobrenome'];
+        $email          = $_SESSION['dadosUsuario']['email'];    
+        $senha          = $_SESSION['dadosUsuario']['senha'];
 
         // Mudamos a ação do form para editar o registro no click do botão
         // da ação salvar.
-        $form = "router.php?componente=categorias&action=editar&id=" . $id;
+        $form = "router.php?componente=usuarios&action=editar&id=".$id;
 
         // Destroi uma variavel da memoria do servidor
         // unset($_SESSION['dadosCategorias']);
@@ -101,7 +103,7 @@ if (session_status()) {
                 <label> Sobrenome : </label>
             </div>
             <div class="cadastroEntradaDeDados">
-                <input type="text" name="txtNome" value="<?= isset($sobrenome) ? $nome : null ?>" placeholder="Digite seu sobrenome" maxlength="100">
+                <input type="text" name="txtSobrenome" value="<?= isset($sobrenome) ? $sobrenome : null ?>" placeholder="Digite seu sobrenome" maxlength="100">
             </div>
         </div>
 
@@ -110,7 +112,7 @@ if (session_status()) {
                 <label> Email: </label>
             </div>
             <div class="cadastroEntradaDeDados">
-                <input type="tel" name="txtTelefone" value="<?= isset($telefone) ? $telefone : null ?>" placeholder="Digite seu email">
+                <input type="tel" name="txtEmail" value="<?= isset($email) ? $email : null ?>" placeholder="Digite seu email">
             </div>
         </div>
 
@@ -119,7 +121,7 @@ if (session_status()) {
                 <label> Senha: </label>
             </div>
             <div class="cadastroEntradaDeDados">
-                <input type="tel" name="txtTelefone" value="<?= isset($telefone) ? $telefone : null ?>" placeholder="Digite sua senha">
+                <input type="tel" name="txtSenha" value="<?= isset($senha) ? $senha : null ?>" placeholder="Digite sua senha">
             </div>
         </div>
 
@@ -134,9 +136,9 @@ if (session_status()) {
         <table>
             <?php
             // Import do arquivo da controller para solicitar a listagem dos dados
-            require_once('./controller/controllerCategorias.php');
+            require_once('./controller/controllerUsuarios.php');
             // Chama a função que vai retornar os dados de contatos
-            $listMensagem = listarCategorias();
+            $listMensagem = listarUsuarios();
 
             // Estrutura de repetição para retornar ps dados do array e printar na tela
             foreach ($listMensagem as $item) {
@@ -149,10 +151,10 @@ if (session_status()) {
                     <td class="tblColunas registros"><?= $item['senha'] ?></td>
 
                     <td class="tblColunas registros">
-                        <a href="router.php?componente=categorias&action=buscar&id=<?= $item['id'] ?>">
+                        <a href="router.php?componente=usuarios&action=buscar&id=<?= $item['id'] ?>">
                             <img src="img/edit.png" alt="Editar" title="Editar" class="editar">
                         </a>
-                        <a onclick="return confirm('Deseja realmente excluir a <?= $item['nome'] ?> categoria?')" href="router.php?componente=categorias&action=deletar&id=<?= $item['id'] ?>">
+                        <a onclick="return confirm('Deseja realmente excluir a <?= $item['nome'] ?> categoria?')" href="router.php?componente=usuarios&action=deletar&id=<?= $item['id'] ?>">
                             <img src="img/trash.png" alt="Excluir" title="Excluir" class="excluir">
                         </a>
                         <img src="img/search.png" alt="Visualizar" title="Visualizar" class="pesquisar">
