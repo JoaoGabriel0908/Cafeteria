@@ -273,8 +273,71 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' || $_SERVER['REQUEST_METHOD'] == 'GET'){
                                     window.history.back();
                                 </script>");
                     }
-                    break;
-                
+                break;
+
+                case 'PRODUTOS';
+
+                    require_once('./controller/controllerProdutos.php');
+
+                    // Validação para verificar o tipo de ação que será realizada
+                    if($action == 'INSERIR')
+                    {
+
+                        if(isset($_FILES) && !empty($_FILES))
+                        {
+                            // Chama a função de inserir na controller
+                            $resposta = inserirProdutos($_POST, $_FILES);
+                        } else {
+                            $resposta = inserirProdutos($_POST, null);
+                        }
+
+                        // Valida o tipo de dado que retornou
+                        if(is_bool($resposta)) // Se for boleano:
+                        {
+                            // Verifica se o retorno foi verdadeiro
+                            if($resposta)
+
+                            echo(" <script>
+                                    alert('Registro inserindo com sucesso!');
+                                    window.location.href = 'produtos.php'; 
+                                </script> ");
+                            }
+
+                            // Se o retorno for array significa que houve um erro no processo de inserção
+                            elseif(is_array($resposta))
+                            echo("<script>
+                                    alert('".$resposta['message']."');
+                                    window.history.back();
+                                </script>");
+                    }
+                    elseif($action == 'DELETAR')
+                    {
+                        // Recebe o id do registro que deverá ser excluído,
+                            // que foi enviado pela URL do link da imagem do exluir
+                            // que foi adicionado na Index.
+                            $idCategoria = $_GET['id'];
+
+                            // Chama a função de excluir na controller
+                            $resposta = excluirProdutos($idproduto);
+
+                            if(is_bool($resposta))
+                            {
+                                if($resposta){
+                                    echo(" <script>
+                                    alert('Registro exluído com sucesso!');
+                                    window.location.href = 'produtos.php'; 
+                                </script> ");
+                                }
+                            }elseif(is_array($resposta))
+                            {
+                                echo("<script>
+                                    alert('".$resposta['message']."');
+                                    window.history.back();
+                                </script>");
+                            }
+                    }
+                    
+                break;
         }
     }
                 
