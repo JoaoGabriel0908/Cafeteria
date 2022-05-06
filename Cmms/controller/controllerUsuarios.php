@@ -42,7 +42,7 @@ function listarUsuarios(){
 
     // Chama a função que vai buscar os dados no BD
     $dados = selectAllUsuarios();
-
+    
     // Se não ter conteúdo ele irá retornar false
     if(!empty($dados))
         return $dados;

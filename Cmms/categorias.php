@@ -54,7 +54,9 @@ if (session_status()) {
         <div class="menu">
             <div class="administradores">
                 <div>
-                    <img src="./IMGs/coffee (1).png" alt="">
+                    <a href="./produtos.php">
+                       <img src="./IMGs/coffee (1).png" alt="">
+                    </a>
                     <p>Adm. de Produtos</p>
                 </div>
                 <div>
