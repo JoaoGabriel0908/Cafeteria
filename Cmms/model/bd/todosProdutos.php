@@ -87,6 +87,7 @@ function selectAllProdutos()
 
 // Função para buscar um contato no BD através do id do registro
 function selectByIdProduto($id)
+
 {
 
     // Abre a conexão 
