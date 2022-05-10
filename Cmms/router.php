@@ -315,7 +315,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' || $_SERVER['REQUEST_METHOD'] == 'GET'){
                         // Recebe o id do registro que deverá ser excluído,
                             // que foi enviado pela URL do link da imagem do exluir
                             // que foi adicionado na Index.
-                            $idCategoria = $_GET['id'];
+                            $idproduto = $_GET['id'];
 
                             // Chama a função de excluir na controller
                             $resposta = excluirProdutos($idproduto);

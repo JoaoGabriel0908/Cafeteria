@@ -3,13 +3,12 @@
 require_once('conexaoMySql.php');
 
 // Função para realizar o insert no BD
-function insertProduto($dadosProduto)
+function insertProduto($dadosProdutos)
 {
-
     $statusRepostas = (boolean) false;
 
     // Abre a conexão com o BD
-    $conexao = conexaoMySql();
+    if($conexao = conexaoMySql()){
 
     // Montando o script para enviar para o BD
     $sql = "insert into tblproduto
@@ -20,14 +19,13 @@ function insertProduto($dadosProduto)
              destaque,
              desconto)
         values
-            ('".$dadosProduto['nome']."',
-            '".$dadosProduto['preco']."',
-            '".$dadosProduto['descricao']."',
-            '".$dadosProduto['foto']."',
-            '".$dadosProduto['destaque']."',
-            '".$dadosProduto['desconto']."');";
-
-        echo($sql);
+            ('".$dadosProdutos['nome']."',
+            '".$dadosProdutos['preco']."',
+            '".$dadosProdutos['descricao']."',
+            '".$dadosProdutos['foto']."',
+            '".$dadosProdutos['destaque']."',
+            '".$dadosProdutos['desconto']."');";
+    }
 
     // Comando que executa o script no banco de dados
         // Validação para verificar se o script sql está correto 
@@ -87,9 +85,7 @@ function selectAllProdutos()
 
 // Função para buscar um contato no BD através do id do registro
 function selectByIdProduto($id)
-
 {
-
     // Abre a conexão 
     $conexao = conexaoMySql();
 
@@ -123,6 +119,28 @@ function selectByIdProduto($id)
 
         return $arrayDados;
 
+}
+
+function deleteProduto($id)
+{
+    // Declaração da Variavel para utilizar no return desta função
+    $statusRepostas = (boolean) false;
+
+    // Abre a conexão com o BD
+    $conexao = conexaoMySql();
+
+    // Script para deletar um registro do BD
+    $sql = "delete from tblproduto where idproduto=".$id;
+
+    // Valida se o script está correto, sem erro de sintaxe e executa o BD
+    if(mysqli_query($conexao, $sql))
+    {
+        // Valida se o BD teve sucesso na execução do exscript
+        if(mysqli_affected_rows($conexao))
+            $statusRepostas = true;
+    }
+    fecharConexaoMysql($conexao);
+    return $statusRepostas;
 }
 
 ?>

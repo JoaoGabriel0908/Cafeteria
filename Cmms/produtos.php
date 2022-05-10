@@ -7,27 +7,28 @@ require_once('modulo/config.php');
 $form = (string) "router.php?componente=produtos&action=inserir";
 
 // Variavel para carregar o nome da foto do banco de dados
+$destaque = null;
 $foto = (string) null;
 
 // Valida se a utilização da variavel de sessão esta ativa no servidor
-    if(session_status()){
-        // Valida se a variavel de sessão dadosContato não esta vazia
-        if(!empty($_SESSION['dadosProduto'])){
-            $id             = $_SESSION['dadosProduto']['id'];
-            $nome           = $_SESSION['dadosProduto']['nome'];
-            $preco       = $_SESSION['dadosProduto']['preco'];
-            $descricao        = $_SESSION['dadosProduto']['descricao'];
-            $foto          = $_SESSION['dadosProduto']['foto'];
-            $destaque        = $_SESSION['dadosProduto']['destaque'];
-            $desconto           = $_SESSION['dadosProduto']['desconto'];
-            // Mudamos a ação do form para editar o registro no click do botão
-            // da ação salvar.
-            $form = "router.php?componente=produtos&action=editar&id=".$id."&foto=".$foto;
+if (session_status()) {
+    // Valida se a variavel de sessão dadosContato não esta vazia
+    if (!empty($_SESSION['dadosProduto'])) {
+        $id             = $_SESSION['dadosProduto']['id'];
+        $nome           = $_SESSION['dadosProduto']['nome'];
+        $preco          = $_SESSION['dadosProduto']['preco'];
+        $descricao      = $_SESSION['dadosProduto']['descricao'];
+        $foto           = $_SESSION['dadosProduto']['foto'];
+        $destaque       = $_SESSION['dadosProduto']['destaque'];
+        $desconto       = $_SESSION['dadosProduto']['desconto'];
+        // Mudamos a ação do form para editar o registro no click do botão
+        // da ação salvar.
+        $form = "router.php?componente=produtos&action=editar&id=" . $id . "&foto=" . $foto;
 
-            // Destroi uma variavel da memoria do servidor
-            unset($_SESSION['dadosProduto']);
-        }
+        // Destroi uma variavel da memoria do servidor
+        unset($_SESSION['dadosProduto']);
     }
+}
 ?>
 
 <!DOCTYPE html>
@@ -118,12 +119,7 @@ $foto = (string) null;
                             <label> Preço: </label>
                         </div>
                         <div class="cadastroEntradaDeDados">
-                            <input oninput="v_ = this.value; if(v_.length > 5){ this.value = v_.slice(0, 5); }" onblur="v_ = this.value; if(!~v_.indexOf('.'))
-                            { vl_ = v_.length; z_ = vl_ == 1 ? '0.00' : ( vl_ == 3 ? '0' : (vl_ == 2 ? '00' : ''));this.value = v_.length < 5 && v_ != '100' ? 
-                            (((v_[0] ? v_[0] : '')+(v_[1] ? v_[1]+'.' : '')+(v_[2] ? v_[2] : '')+(v_[3] ? v_[3] : '')+(v_[4] ? v_[4] : '')+z_)):('100.00')};" 
-                            type="number" id="teste" step=".01" min=".01" max="100" name="txtpreco" value="<?= isset($preco) ? $preco : null ?>">
-
-                            <!-- <input type="number" name="txtpreco" value="<?= isset($preco) ? $preco : null ?>"> -->
+                            <input type="floatval" name="txtpreco" value="<?= isset($preco) ? $preco : null ?>">
                         </div>
                     </div>
                     <div class="campos">
@@ -131,8 +127,7 @@ $foto = (string) null;
                             <label> Destaque: </label>
                         </div>
                         <div class="cadastroEntradaDeDados">
-                            <input type="radio" name="txtdestaque" value="<?= isset($destaque)?$destaque:null?>">
-                            <input type="radio" name="txtdestaque" value="<?=isset($destaque)?$destaque:null?>">
+                            <input type="checkbox" name="chbdestaque" class="inputDestaque" <?= $destaque == '1' ? 'checked' : null ?>>
                         </div>
                     </div>
                     <div class="campos">
@@ -140,7 +135,7 @@ $foto = (string) null;
                             <label> Porcentual de Desconto: </label>
                         </div>
                         <div class="cadastroEntradaDeDados">
-                            <input type="number" name="txtdesconto" value="<?= isset($desconto) ? $desconto : null ?>">
+                            <input type="number" name="numdesconto" value="<?= isset($desconto) ? $desconto : null ?>">
                         </div>
                     </div>
                     <div class="campos">
@@ -148,7 +143,7 @@ $foto = (string) null;
                             <label> Escolha um arquivo: </label>
                         </div>
                         <div class="cadastroEntradaDeDados">
-                            <input type="file" name="fleFoto" accept=".jpg, .png, .jpeg, .gif"> 
+                            <input type="file" name="fleFoto" accept=".jpg, .png, .jpeg, .gif">
                         </div>
                     </div>
                     <div class="campos">
@@ -156,13 +151,12 @@ $foto = (string) null;
                             <label> Descrição: </label>
                         </div>
                         <div class="cadastroEntradaDeDados">
-                            <textarea name="txtdescricao" cols="50" rows="7"><?= isset($descricao) ? $obs : null ?></textarea>
+                            <textarea name="txtdescricao" cols="50" rows="7"><?= isset($descricao) ? $descricao : null ?></textarea>
                         </div>
                     </div>
-                    <div class="campos">
-                        <img src="<?= DIRETORIO_FILE_UPLOAD . $foto ?>" alt="">
-                    </div>
-
+            </div>
+            <div class="campos">
+                <img src="<?= DIRETORIO_FILE_UPLOAD . $foto ?>" alt="">
             </div>
             <div class="enviar">
                 <div class="enviar">
@@ -198,21 +192,24 @@ $foto = (string) null;
 
                 // Estrutura de repetição para retornar ps dados do array e printar na tela
                 foreach ($listProdutos as $item) {
+                    $foto = $item['foto']
                 ?>
 
                     <tr id="tblLinhas">
                         <td class="tblColunas registros"><?= $item['nome'] ?></td>
                         <td class="tblColunas registros"><?= $item['preco'] ?></td>
                         <td class="tblColunas registros"><?= $item['descricao'] ?></td>
-                        <td class="tblColunas registros"><?= $item['foto'] ?></td>
-                        <td class="tblColunas registros"><?= $item['destaque'] ?></td>
+                        <td class="tblColunas registros"><img src="<?= DIRETORIO_FILE_UPLOAD . $foto ?>" class="foto"></td>
+                        <td class="tblColunas registros"><?= $item['destaque'] == '1' ? 'sim' : 'não' ?></td>
                         <td class="tblColunas registros"><?= $item['desconto'] ?></td>
+
+
 
                         <td class="tblColunas registros">
                             <a href="router.php?componente=produtos&action=buscar&id=<?= $item['id'] ?>">
                                 <img src="img/edit.png" alt="Editar" title="Editar" class="editar">
                             </a>
-                            <a onclick="return confirm('Deseja realmente excluir este <?= $item['nome'] ?> contato?')" href="router.php?componente=produtos&action=deletar&id=<?= $item['id'] ?>">
+                            <a onclick="return confirm('Deseja realmente excluir este <?= $item['nome'] ?> contato?')" href="router.php?componente=produtos&action=deletar&id=<?= $item['id'] ?>&foto=<?= $foto ?>">
                                 <img src="img/trash.png" alt="Excluir" title="Excluir" class="excluir">
                             </a>
                             <img src="img/search.png" alt="Visualizar" title="Visualizar" class="pesquisar">
