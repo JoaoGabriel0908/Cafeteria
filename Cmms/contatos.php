@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./CSSCMS/reset.css">
     <link rel="stylesheet" href="./CSSCMS/autenticacao.css">
+    <link rel="stylesheet" href="./CSSCMS/produtos.css">
     <title>Dashboard</title>
 </head>
 
@@ -29,7 +30,7 @@
             <div class="administradores">
                 <div>
                     <a href="./produtos.php">
-                       <img src="./IMGs/coffee (1).png" alt="">
+                        <img src="./IMGs/coffee (1).png" alt="">
                     </a>
                     <p>Adm. de Produtos</p>
                 </div>
@@ -59,38 +60,50 @@
             </div>
         </div>
     </section>
+    </section>
     <section class="principal">
-        <p>Titulo da Sessão</p>
-        <table>
-            <?php
-            // Import do arquivo da controller para solicitar a listagem dos dados
-            require_once('./controller/controllerMensagens.php');
-            // Chama a função que vai retornar os dados de contatos
-            $listMensagem = listarMensagens();
-
-            // Estrutura de repetição para retornar ps dados do array e printar na tela
-            foreach ($listMensagem as $item) {
-            ?>
-
-                <tr id="tblLinhas">
-                    <td class="tblColunas registros"><?= $item['nome'] ?></td>
-                    <td class="tblColunas registros"><?= $item['email'] ?></td>
-                    <td class="tblColunas registros"><?= $item['mensagem'] ?></td>
-
-                    <td class="tblColunas registros">
-                        <a href="router.php?componente=contatos&action=buscar&id=<?= $item['id'] ?>">
-                            <img src="img/edit.png" alt="Editar" title="Editar" class="editar">
-                        </a>
-                        <a onclick="return confirm('Deseja realmente excluir este <?= $item['nome'] ?> contato?')" href="router.php?componente=contatos&action=deletar&id=<?= $item['id'] ?>">
-                            <img src="img/trash.png" alt="Excluir" title="Excluir" class="excluir">
-                        </a>
-                        <img src="img/search.png" alt="Visualizar" title="Visualizar" class="pesquisar">
+        <div id="consultaDeDados">
+            <table id="tblConsulta">
+                <tr>
+                    <td id="tblTitulo" colspan="6">
+                        <h1> Consulta de Contatos </h1>
                     </td>
                 </tr>
-            <?php
-            }
-            ?>
-        </table>
+                <tr id="tblLinhas">
+                    <td class="tblColunas destaque"> Nome </td>
+                    <td class="tblColunas destaque"> email </td>
+                    <td class="tblColunas destaque"> Mensagem </td>
+                </tr>
+                <?php
+                // Import do arquivo da controller para solicitar a listagem dos dados
+                require_once('./controller/controllerMensagens.php');
+                // Chama a função que vai retornar os dados de contatos
+                $listMensagem = listarMensagens();
+
+                // Estrutura de repetição para retornar ps dados do array e printar na tela
+                foreach ($listMensagem as $item) {
+                ?>
+
+                    <tr id="tblLinhas">
+                        <td class="tblColunas registros"><?= $item['nome'] ?></td>
+                        <td class="tblColunas registros"><?= $item['email'] ?></td>
+                        <td class="tblColunas registros"><?= $item['mensagem'] ?></td>
+
+                        <td class="tblColunas registros">
+                            <a href="router.php?componente=contatos&action=buscar&id=<?= $item['id'] ?>">
+                                <img src="img/edit.png" alt="Editar" title="Editar" class="editar">
+                            </a>
+                            <a onclick="return confirm('Deseja realmente excluir este <?= $item['nome'] ?> contato?')" href="router.php?componente=contatos&action=deletar&id=<?= $item['id'] ?>">
+                                <img src="img/trash.png" alt="Excluir" title="Excluir" class="excluir">
+                            </a>
+                            <img src="img/search.png" alt="Visualizar" title="Visualizar" class="pesquisar">
+                        </td>
+                    </tr>
+                <?php
+                }
+                ?>
+            </table>
+        </div>
     </section>
     <footer>
         <div class="copyright">

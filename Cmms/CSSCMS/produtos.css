@@ -7,7 +7,7 @@ body, h1, p{
 }
 #cadastro{
     width: 800px;
-    min-height: 700px;
+    min-height: 100px;
     height: auto;
     margin-left: auto;
     margin-right: auto;
@@ -15,6 +15,7 @@ body, h1, p{
     box-sizing: border-box;
     border: solid 1px black;
     box-shadow: 10px 10px 10px #cccccc;
+    margin-top: 20px;
 }
 
 #login{
@@ -99,7 +100,7 @@ input[type=email]:hover{
     height: 50px;
     background-color: dodgerblue;
     color: white;
-    margin-top: 30px;
+    margin: auto;
     font-size: 1.2em;
 }
 
@@ -116,8 +117,10 @@ input[type=email]:hover{
     height: 50px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 50px;
+    margin-top: 10px;
     margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
 }
 #consultaDeDados{
     width: 1000px;

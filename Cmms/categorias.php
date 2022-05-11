@@ -32,6 +32,7 @@ if (session_status()) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./CSSCMS/reset.css">
     <link rel="stylesheet" href="./CSSCMS/autenticacao.css">
+    <link rel="stylesheet" href="./CSSCMS/produtos.css">
     <title>Dashboard</title>
 </head>
 
@@ -55,7 +56,7 @@ if (session_status()) {
             <div class="administradores">
                 <div>
                     <a href="./produtos.php">
-                       <img src="./IMGs/coffee (1).png" alt="">
+                        <img src="./IMGs/coffee (1).png" alt="">
                     </a>
                     <p>Adm. de Produtos</p>
                 </div>
@@ -85,66 +86,80 @@ if (session_status()) {
             </div>
         </div>
     </section>
-    <section id="cadastro">
-        <div id="cadastroTitulo">
-            <h1> Cadastro de Categorias </h1>
-        </div>
-        <div id="cadastroInformacoes">
-            <!-- Enviando variaveis para o router -->
-            <form action="<?= $form ?>" name="frmCadastro" method="post" enctype="multipart/form-data">
+    <section>
+        <div id="cadastro">
+            <div id="cadastroTitulo">
+                <h1> Cadastro de Categorias </h1>
+            </div>
+            <div id="cadastroInformacoes">
+                <!-- Enviando variaveis para o router -->
+                <form action="<?= $form ?>" name="frmCadastro" method="post" enctype="multipart/form-data">
+                    <div class="campos">
+                        <div class="cadastroInformacoesPessoais">
+                            <label> Nome: </label>
+                        </div>
+                        <div class="cadastroEntradaDeDados">
+                            <input type="text" name="txtNome" value="<?= isset($nome) ? $nome : null ?>" placeholder="Digite sua Categoria" maxlength="100">
+                        </div>
+                    </div>
+            </div>
+
+            <div class="campos">
                 <div class="cadastroInformacoesPessoais">
-                    <label> Nome: </label>
+                    <label> Escolha um arquivo : </label>
                 </div>
                 <div class="cadastroEntradaDeDados">
-                    <input type="text" name="txtNome" value="<?= isset($nome) ? $nome : null ?>" placeholder="Digite sua Categoria" maxlength="100">
+                    <input type="file" name="fleFoto" accept=".jpg, .png, .jpeg, .gif">
                 </div>
-        </div>
-
-        <div class="campos">
-            <div class="cadastroInformacoesPessoais">
-                <label> Escolha um arquivo : </label>
             </div>
-            <div class="cadastroEntradaDeDados">
-                <input type="file" name="fleFoto" accept=".jpg, .png, .jpeg, .gif">
-            </div>
-        </div>
-        <div class="enviar">
             <div class="enviar">
-                <input type="submit" name="btnEnviar" value="Salvar">
+                <div class="enviar">
+                    <input type="submit" name="btnEnviar" value="Salvar">
+                </div>
             </div>
         </div>
     </section>
     <section class="principal">
-        <p>Titulo da Sessão</p>
-        <table>
-            <?php
-            // Import do arquivo da controller para solicitar a listagem dos dados
-            require_once('./controller/controllerCategorias.php');
-            // Chama a função que vai retornar os dados de contatos
-            $listMensagem = listarCategorias();
-
-            // Estrutura de repetição para retornar ps dados do array e printar na tela
-            foreach ($listMensagem as $item) {
-            ?>
-
-                <tr id="tblLinhas">
-                    <td class="tblColunas registros"><?= $item['nome'] ?></td>
-                    <td class="tblColunas registros"><img src="arquivos/<?= $item['icone'] ?>" class="foto"></td>
-
-                    <td class="tblColunas registros">
-                        <a href="router.php?componente=categorias&action=buscar&id=<?= $item['id'] ?>">
-                            <img src="img/edit.png" alt="Editar" title="Editar" class="editar">
-                        </a>
-                        <a onclick="return confirm('Deseja realmente excluir a <?= $item['nome'] ?> categoria?')" href="router.php?componente=categorias&action=deletar&id=<?= $item['id'] ?>">
-                            <img src="img/trash.png" alt="Excluir" title="Excluir" class="excluir">
-                        </a>
-                        <img src="img/search.png" alt="Visualizar" title="Visualizar" class="pesquisar">
+        <div id="consultaDeDados">
+            <table id="tblConsulta">
+                <tr>
+                    <td id="tblTitulo" colspan="6">
+                        <h1> Consulta de Categorias</h1>
                     </td>
                 </tr>
-            <?php
-            }
-            ?>
-        </table>
+                <tr id="tblLinhas">
+                    <td class="tblColunas destaque"> Nome </td>
+                    <td class="tblColunas destaque"> Foto </td>
+                </tr>
+                <?php
+                // Import do arquivo da controller para solicitar a listagem dos dados
+                require_once('./controller/controllerCategorias.php');
+                // Chama a função que vai retornar os dados de contatos
+                $listMensagem = listarCategorias();
+
+                // Estrutura de repetição para retornar ps dados do array e printar na tela
+                foreach ($listMensagem as $item) {
+                ?>
+
+                    <tr id="tblLinhas">
+                        <td class="tblColunas registros"><?= $item['nome'] ?></td>
+                        <td class="tblColunas registros"><img src="arquivos/<?= $item['icone'] ?>" class="foto"></td>
+
+                        <td class="tblColunas registros">
+                            <a href="router.php?componente=categorias&action=buscar&id=<?= $item['id'] ?>">
+                                <img src="img/edit.png" alt="Editar" title="Editar" class="editar">
+                            </a>
+                            <a onclick="return confirm('Deseja realmente excluir a <?= $item['nome'] ?> categoria?')" href="router.php?componente=categorias&action=deletar&id=<?= $item['id'] ?>">
+                                <img src="img/trash.png" alt="Excluir" title="Excluir" class="excluir">
+                            </a>
+                            <img src="img/search.png" alt="Visualizar" title="Visualizar" class="pesquisar">
+                        </td>
+                    </tr>
+                <?php
+                }
+                ?>
+            </table>
+        </div>
     </section>
     <footer>
         <div class="copyright">
