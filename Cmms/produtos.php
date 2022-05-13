@@ -9,6 +9,7 @@ $form = (string) "router.php?componente=produtos&action=inserir";
 // Variavel para carregar o nome da foto do banco de dados
 $destaque = null;
 $foto = (string) null;
+$idcategoria = (string) null;
 
 // Valida se a utilização da variavel de sessão esta ativa no servidor
 if (session_status()) {
@@ -21,6 +22,8 @@ if (session_status()) {
         $foto           = $_SESSION['dadosProduto']['foto'];
         $destaque       = $_SESSION['dadosProduto']['destaque'];
         $desconto       = $_SESSION['dadosProduto']['desconto'];
+        $idcategoria    = $_SESSION['dadosProduto']['idcategoria'];
+
         // Mudamos a ação do form para editar o registro no click do botão
         // da ação salvar.
         $form = "router.php?componente=produtos&action=editar&id=" . $id . "&foto=" . $foto;
@@ -190,9 +193,11 @@ if (session_status()) {
                 // Chama a função que vai retornar os dados de contatos
                 $listProdutos = listarProdutos();
 
-                // Estrutura de repetição para retornar ps dados do array e printar na tela
-                foreach ($listProdutos as $item) {
-                    $foto = $item['foto']
+                if($listProdutos = listarProdutos()){
+
+                    // Estrutura de repetição para retornar ps dados do array e printar na tela
+                    foreach ($listProdutos as $item) {
+                        $foto = $item['foto']
                 ?>
 
                     <tr id="tblLinhas">
@@ -217,6 +222,7 @@ if (session_status()) {
                     </tr>
                 <?php
                 }
+            }
                 ?>
             </table>
         </div>

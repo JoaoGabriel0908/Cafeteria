@@ -316,9 +316,16 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' || $_SERVER['REQUEST_METHOD'] == 'GET'){
                             // que foi enviado pela URL do link da imagem do exluir
                             // que foi adicionado na Index.
                             $idproduto = $_GET['id'];
+                            $foto = $_GET['foto'];
+
+                            // Criamos um array para encaminhar os valores do id e da foto para a Controller
+                            $arrayDados = array (
+                                "id"        => $idproduto,
+                                "foto"      => $foto
+                            );
 
                             // Chama a função de excluir na controller
-                            $resposta = excluirProdutos($idproduto);
+                            $resposta = excluirProdutos($arrayDados);
 
                             if(is_bool($resposta))
                             {
@@ -336,9 +343,75 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' || $_SERVER['REQUEST_METHOD'] == 'GET'){
                                 </script>");
                             }
                     }
+                    elseif($action == 'BUSCAR')
+                    {
+                        // Recebe o id do registro que deverá ser excluído,
+                        // que foi enviado pela URL do link da imagem do exluir
+                        // que foi adicionado na Index.
+                        $idproduto = $_GET['id'];
+
+                        // Chama a função de excluir na controller
+                        $dados = buscarProduto($idproduto);
+
+                        // Ativa a utilização de variavel de sessão no servidor
+                        session_start();
+
+                        // Guarda em uma variavel de sessão os dados que o BD retornou 
+                        // para a busca do ID
+                            // Obs: Essa variável de sessão será utilizada na index.php,
+                            // para colocar os dados na caixa de texto 
+                        $_SESSION['dadosProduto'] = $dados;
+                        
+                        /* Utilizando o header também poderemos chamar a index.php,
+                        Porém haverá um ação de carregamento no navegador
+                        (piscando a tela)*/
+                        // header('location: index.php');
+
+                        // Utilizando o require iremos apenas importar a tela da index.php,
+                        // Assim não havendo um novo carregamento da página
+                        require_once('produtos.php');
                     
+                
+                    }
+                    elseif($action == 'EDITAR')
+                    {
+                        // Recebe o id que foi encaminhado no action do form pela URL
+                        $idproduto = $_GET['id'];
+
+                        // Recebe o nome da foto que foi enviada pelo GET do from
+                        $foto = $_GET['foto'];
+
+                        $arrayDados = array (
+                            "id"            => $idproduto,
+                            "foto"          => $foto,
+                            "file"          => $_FILES,
+                        );
+
+                        // Chama a função de editar na controller 
+                        $resposta = atualizarProduto($_POST, $arrayDados);
+
+                        // Valida o tipo de dado que retornou
+                        if(is_bool($resposta)) // Se for boleano:
+                        {
+                            // Verifica se o retorno foi verdadeiro
+                            if($resposta)
+
+                            echo(" <script>
+                                    alert('Registro atualizado com sucesso!');
+                                    window.location.href = 'produtos.php'; 
+                                </script> ");
+                            }
+
+                            // Se o retorno for array significa que houve um erro no processo de inserção
+                            elseif(is_array($resposta))
+                            echo("<script>
+                                    alert('".$resposta['message']."');
+                                    window.history.back();
+                                </script>");
+                    }
                 break;
-        }
-    }
+                }
+            }
+    
                 
 ?>

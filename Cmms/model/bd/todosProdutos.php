@@ -74,12 +74,47 @@ function selectAllProdutos()
                 "desconto"      => $rsDados['desconto']
             );
             $cont++;
-        }
 
+        }
         // Solicita o fechamento da conexão com o Banco de Dados
         fecharConexaoMysql($conexao);
 
-        return $arrayDados;
+        if(isset($arrayDados)){
+            return $arrayDados;
+        } else 
+            return false;
+    }
+}
+
+// Função para realizar o update no BD
+function uptadeProduto($dadosProduto){
+
+    $statusRepostas = (boolean) false;
+
+    // Abre a conexão com o BD
+    $conexao = conexaoMySql();
+
+    // Montando o script para enviar para o BD
+    $sql = "update tblproduto set
+                nome           = '".$dadosProduto['nome']."',
+                preco          = '".$dadosProduto['preco']."',
+                descricao      = '".$dadosProduto['descricao']."',
+                foto           = '".$dadosProduto['foto']."',
+                destaque       = '".$dadosProduto['destaque']."',
+                desconto       = '".$dadosProduto['desconto']."'
+
+            where idproduto =".$dadosProduto['id'];
+             
+    // Comando que executa o script no banco de dados
+        // Validação para verificar se o script sql está correto 
+    if (mysqli_query($conexao, $sql)){
+        
+        // Validação para verificar se uma linha foi acrescentada no BD
+        if(mysqli_affected_rows($conexao))
+            $statusRepostas =  true;
+
+    fecharConexaoMysql($conexao);
+    return $statusRepostas;
     }
 }
 
@@ -106,11 +141,13 @@ function selectByIdProduto($id)
         {
             // Cria um array com os dados do BD baseado em índice e em chave
             $arrayDados = array(
-                "id"            => $rsDados['idusuario'],
+                "id"            => $rsDados['idproduto'],
                 "nome"          => $rsDados['nome'],
-                "sobrenome"     => $rsDados['sobrenome'],
-                "email"         => $rsDados['email'],
-                "senha"         => $rsDados['senha']
+                "preco"         => $rsDados['preco'],
+                "descricao"     => $rsDados['descricao'],
+                "foto"          => $rsDados['foto'],
+                "destaque"      => $rsDados['destaque'],
+                "desconto"      => $rsDados['desconto']
             );
         }
     }
