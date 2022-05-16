@@ -3,12 +3,12 @@
 require_once('conexaoMySql.php');
 
 // Função para realizar o insert no BD
-function insertProduto($dadosProdutos)
+function insertProduto($dadosProduto)
 {
     $statusRepostas = (boolean) false;
 
     // Abre a conexão com o BD
-    if($conexao = conexaoMySql()){
+    $conexao = conexaoMySql();
 
     // Montando o script para enviar para o BD
     $sql = "insert into tblproduto
@@ -17,28 +17,28 @@ function insertProduto($dadosProdutos)
              descricao,
              foto,
              destaque,
-             desconto)
+             desconto,
+             idcategoria)
         values
-            ('".$dadosProdutos['nome']."',
-            '".$dadosProdutos['preco']."',
-            '".$dadosProdutos['descricao']."',
-            '".$dadosProdutos['foto']."',
-            '".$dadosProdutos['destaque']."',
-            '".$dadosProdutos['desconto']."');";
-    }
+            ('".$dadosProduto['nome']."',
+            '".$dadosProduto['preco']."',
+            '".$dadosProduto['descricao']."',
+            '".$dadosProduto['foto']."',
+            '".$dadosProduto['destaque']."',
+            '".$dadosProduto['desconto']."',
+            '".$dadosProduto['idcategoria']."');";
 
     // Comando que executa o script no banco de dados
-        // Validação para verificar se o script sql está correto 
+    // Validação para verificar se o script sql está correto 
     if (mysqli_query($conexao, $sql)){
         
         // Validação para verificar se uma linha foi acrescentada no BD
         if(mysqli_affected_rows($conexao))
             $statusRepostas =  true;
-
+            
     fecharConexaoMysql($conexao);
     return $statusRepostas;
     }
-
 }
 
 function selectAllProdutos()
@@ -71,7 +71,8 @@ function selectAllProdutos()
                 "descricao"     => $rsDados['descricao'],
                 "foto"          => $rsDados['foto'],
                 "destaque"      => $rsDados['destaque'],
-                "desconto"      => $rsDados['desconto']
+                "desconto"      => $rsDados['desconto'],
+                "idcategoria"   => $rsDados['idcategoria']
             );
             $cont++;
 
@@ -101,7 +102,8 @@ function uptadeProduto($dadosProduto){
                 descricao      = '".$dadosProduto['descricao']."',
                 foto           = '".$dadosProduto['foto']."',
                 destaque       = '".$dadosProduto['destaque']."',
-                desconto       = '".$dadosProduto['desconto']."'
+                desconto       = '".$dadosProduto['desconto']."',
+                idcategoria    = '".$dadosProduto['idcategoria']."'
 
             where idproduto =".$dadosProduto['id'];
              
@@ -147,7 +149,8 @@ function selectByIdProduto($id)
                 "descricao"     => $rsDados['descricao'],
                 "foto"          => $rsDados['foto'],
                 "destaque"      => $rsDados['destaque'],
-                "desconto"      => $rsDados['desconto']
+                "desconto"      => $rsDados['desconto'],
+                "idcategoria"   => $rsDados['idcategoria']
             );
         }
     }

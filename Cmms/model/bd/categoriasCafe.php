@@ -14,12 +14,11 @@ function insertCategoria($dadosCategoria)
     // Montando o script para enviar para o BD
     $sql = "insert into tblcategoria
             (nome,
-             icone)
+             foto)
         values
             ('".$dadosCategoria['nome']."',
-            '".$dadosCategoria['icone']."');";
+            '".$dadosCategoria['foto']."');";
 
-        echo($sql);
 
     // Comando que executa o script no banco de dados
         // Validação para verificar se o script sql está correto 
@@ -60,7 +59,7 @@ function selectAllCategorias()
             $arrayDados[$cont] = array(
                 "id"            => $rsDados['idcategoria'],
                 "nome"          => $rsDados['nome'],
-                "icone"         => $rsDados['icone']
+                "foto"         => $rsDados['foto']
             );
             $cont++;
         }
@@ -68,7 +67,10 @@ function selectAllCategorias()
         // Solicita o fechamento da conexão com o Banco de Dados
         fecharConexaoMysql($conexao);
 
-        return $arrayDados;
+        if(isset($arrayDados)){
+            return $arrayDados;
+        } else 
+            return false;
     }
 
 }
@@ -99,7 +101,7 @@ function selectByIdCategoria($id)
             $arrayDados = array(
                 "id"            => $rsDados['idcategoria'],
                 "nome"          => $rsDados['nome'],
-                "icone"         => $rsDados['icone']
+                "foto"         => $rsDados['foto']
             );
         }
     }
@@ -120,8 +122,8 @@ function uptadeCategoria($dadosCategoria)
 
     // Montando o script para enviar para o BD
     $sql = "update tblcategoria set
-                nome           = '".$dadosCategoria['nome']."',
-                icone          = '".$dadosCategoria['icone']."'
+                nome            = '".$dadosCategoria['nome']."',
+                foto            = '".$dadosCategoria['foto']."'
 
             where idcategoria =".$dadosCategoria['id'];
              

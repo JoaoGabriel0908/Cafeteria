@@ -22,8 +22,6 @@ function insertUsuario($dadosUsuario){
             '".$dadosUsuario['email']."',
             '".$dadosUsuario['senha']."');";
 
-        echo($sql);
-
     // Comando que executa o script no banco de dados
         // Validação para verificar se o script sql está correto 
     if (mysqli_query($conexao, $sql)){

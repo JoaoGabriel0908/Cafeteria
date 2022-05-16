@@ -86,10 +86,17 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' || $_SERVER['REQUEST_METHOD'] == 'GET'){
                         // Recebe o id do registro que deverá ser excluído,
                             // que foi enviado pela URL do link da imagem do exluir
                             // que foi adicionado na Index.
-                            $idCategoria = $_GET['id'];
+                            $idcategoria = $_GET['id'];
+                            $foto = $_GET['foto'];
+
+                            // Criamos um array para encaminhar os valores do id e da foto para a Controller
+                            $arrayDados = array (
+                            "id"        => $idcategoria,
+                            "foto"     => $foto
+                            );
 
                             // Chama a função de excluir na controller
-                            $resposta = excluirCategoria($idCategoria);
+                            $resposta = excluirCategoria($arrayDados);
 
                             if(is_bool($resposta))
                             {
@@ -112,10 +119,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' || $_SERVER['REQUEST_METHOD'] == 'GET'){
                         // Recebe o id do registro que deverá ser excluído,
                             // que foi enviado pela URL do link da imagem do exluir
                             // que foi adicionado na Index.
-                            $idCategoria = $_GET['id'];
+                            $idcategoria = $_GET['id'];
 
                             // Chama a função de excluir na controller
-                            $dados = buscarCategoria($idCategoria);
+                            $dados = buscarCategoria($idcategoria);
                             
                             // Ativa a utilização de variavel de sessão no servidor
                             session_start();
@@ -138,10 +145,19 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' || $_SERVER['REQUEST_METHOD'] == 'GET'){
                     elseif($action == 'EDITAR')
                     {
                         // Recebe o id que foi encaminhado no action do form pela URL
-                        $idCategoria = $_GET['id'];
+                        $idcategoria = $_GET['id'];
+
+                        // Recebe o nome da foto que foi enviada pelo GET do from
+                        $foto = $_GET['foto'];
+
+                        $arrayDados = array (
+                            "id"    => $idcategoria,
+                            "foto"  => $foto,
+                            "file"  => $_FILES
+                        );
 
                         // Chama a função de editar na controller 
-                        $resposta = atualizarCategoria($_POST, $idCategoria);
+                        $resposta = atualizarCategoria($_POST, $arrayDados);
 
                         // Valida o tipo de dado que retornou
                         if(is_bool($resposta)) // Se for boleano:

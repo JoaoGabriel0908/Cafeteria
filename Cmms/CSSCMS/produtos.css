@@ -1,5 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
 *{
-    font-family: verdana;
+    font-family: 'Poppins', sans-serif;
 }
 body, h1, p{
     margin: 0px;
@@ -51,25 +52,23 @@ body, h1, p{
     margin-top: 10px;
 }
 .cadastroInformacoesPessoais  {
-    width: 270px;
+    width: 30%;
     height: 55px;
-    float: left;
-   
     background-color: #ededed;
     text-align: right;
     font-size: 1.1em;
     padding-top: 10px;
     padding-right: 10px;
-    box-sizing: border-box;
+    display: inline-block;
     margin-right: 10px;
     
 }
 .cadastroEntradaDeDados {
-    width: 600px;
+    width: 70%;
     height: auto;
     margin-left: 10px;
     padding-top: 10px;
-    box-sizing: border-box;
+    position: relative;
 }
 
 input[type=text], 
@@ -79,7 +78,33 @@ select {
     height: 30px;
     margin-left: 10px;
     width: 90%;
+    padding: 10px;
+    display: block;
+    border: 2px solid white;
+    border-radius: 10px;
+}
 
+form .cadastroEntradaDeDados i{
+    position: absolute;
+    bottom: 16px;
+    right: 50px;
+    visibility: hidden;
+}
+
+.cadastroEntradaDeDados.sucesso input{
+    border-color: aqua;
+}
+.cadastroEntradaDeDados.sucesso i.fa-check{
+    color: aqua;
+    visibility: visible;
+}
+
+.cadastroEntradaDeDados.error input{
+    border-color: red;
+}
+.cadastroEntradaDeDados.error i.fa-exclamation-circle{
+    color: red;
+    visibility: visible;
 }
 
 input[type=text]:hover, 
@@ -88,7 +113,6 @@ input[type=email]:hover{
     background-color: rgb(246, 246, 196);
     transition: 1s;
 }
-
 
 .cadastroEntradaDeDados textarea{
     width: 90%;
@@ -113,7 +137,7 @@ input[type=email]:hover{
 }
 
 .enviar{
-    width: 100;
+    width: 150px;
     height: 50px;
     margin-left: auto;
     margin-right: auto;

@@ -7,7 +7,7 @@ require_once('modulo/config.php');
 $form = (string) "router.php?componente=produtos&action=inserir";
 
 // Variavel para carregar o nome da foto do banco de dados
-$destaque = null;
+$destaque = (int) 0;
 $foto = (string) null;
 $idcategoria = (string) null;
 
@@ -26,7 +26,7 @@ if (session_status()) {
 
         // Mudamos a ação do form para editar o registro no click do botão
         // da ação salvar.
-        $form = "router.php?componente=produtos&action=editar&id=" . $id . "&foto=" . $foto;
+        $form = "router.php?componente=produtos&action=editar&id=".$id."&foto=".$foto;
 
         // Destroi uma variavel da memoria do servidor
         unset($_SESSION['dadosProduto']);
@@ -40,6 +40,7 @@ if (session_status()) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/d0d3619a1c.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./CSSCMS/reset.css">
     <link rel="stylesheet" href="./CSSCMS/produtos.css">
     <link rel="stylesheet" href="./CSSCMS/autenticacao.css">
@@ -127,18 +128,10 @@ if (session_status()) {
                     </div>
                     <div class="campos">
                         <div class="cadastroInformacoesPessoais">
-                            <label> Destaque: </label>
-                        </div>
-                        <div class="cadastroEntradaDeDados">
-                            <input type="checkbox" name="chbdestaque" class="inputDestaque" <?= $destaque == '1' ? 'checked' : null ?>>
-                        </div>
-                    </div>
-                    <div class="campos">
-                        <div class="cadastroInformacoesPessoais">
                             <label> Porcentual de Desconto: </label>
                         </div>
                         <div class="cadastroEntradaDeDados">
-                            <input type="number" name="numdesconto" value="<?= isset($desconto) ? $desconto : null ?>">
+                            <input type="number" name="numdesconto" value="<?= isset($desconto) ? $desconto : '0' ?>">
                         </div>
                     </div>
                     <div class="campos">
@@ -151,12 +144,42 @@ if (session_status()) {
                     </div>
                     <div class="campos">
                         <div class="cadastroInformacoesPessoais">
+                            <label> Destaque: </label>
+                        </div>
+                        <div class="cadastroEntradaDeDados">
+                            <input type="checkbox" name="chbdestaque" class="inputDestaque" <?= $destaque == '1' ? 'checked' : null ?>>
+                        </div>
+                    </div>
+                    <div class="campos">
+                        <div class="cadastroInformacoesPessoais">
                             <label> Descrição: </label>
                         </div>
                         <div class="cadastroEntradaDeDados">
                             <textarea name="txtdescricao" cols="50" rows="7"><?= isset($descricao) ? $descricao : null ?></textarea>
                         </div>
                     </div>
+                    <div class="campos">
+                        <div class="cadastroInformacoesPessoais">
+                            <label> Categoria: </label>
+                        </div>
+                        <div class="cadastroEntradaDeDados">
+                            <select name="sltCategoria" id="">
+                                <option value="">Selecione um item</option>
+                                <?php
+                                // Import da controller de estado
+                                    require_once('controller/controllerCategorias.php');
+                                    $listCategorias = listarCategorias();
+                                    // Chama a função para carregar todos os estados no BD
+                                    foreach ($listCategorias as $item)
+                                    {
+                                        ?>
+                                            <option <?=$idcategoria==$item['id']?'selected':null?> value="<?=$item['id']?>"><?=$item['nome']?></option>
+                                        <?php
+                                    }
+                                ?>
+                            </select>
+                        </div>
+                    </div>  
             </div>
             <div class="campos">
                 <img src="<?= DIRETORIO_FILE_UPLOAD . $foto ?>" alt="">
@@ -185,6 +208,7 @@ if (session_status()) {
                     <td class="tblColunas destaque"> Foto </td>
                     <td class="tblColunas destaque"> Destaque </td>
                     <td class="tblColunas destaque"> Desconto </td>
+                    <td class="tblColunas destaque"> Categoria </td>
                 </tr>
 
                 <?php
@@ -207,7 +231,7 @@ if (session_status()) {
                         <td class="tblColunas registros"><img src="<?= DIRETORIO_FILE_UPLOAD . $foto ?>" class="foto"></td>
                         <td class="tblColunas registros"><?= $item['destaque'] == '1' ? 'sim' : 'não' ?></td>
                         <td class="tblColunas registros"><?= $item['desconto'] ?></td>
-
+                        <td class="tblColunas registros"><?= $item['idcategoria'] ?></td>
 
 
                         <td class="tblColunas registros">

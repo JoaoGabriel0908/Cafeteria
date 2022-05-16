@@ -32,9 +32,11 @@ if (session_status()) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/d0d3619a1c.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./CSSCMS/reset.css">
     <link rel="stylesheet" href="./CSSCMS/autenticacao.css">
     <link rel="stylesheet" href="./CSSCMS/produtos.css">
+    <script src="../Javascript/dashboard.js" defer></script>
     <title>Dashboard</title>
 </head>
 
@@ -93,49 +95,58 @@ if (session_status()) {
             </div>
             <div id="cadastroInformacoes">
                 <!-- Enviando variaveis para o router -->
-                <form action="<?= $form ?>" name="frmCadastro" method="post" enctype="multipart/form-data">
+                <form action="<?= $form ?>" id="form" name="frmCadastro" method="post" enctype="multipart/form-data">
                     <div class="campos">
                         <div class="cadastroInformacoesPessoais">
-                            <label> Nome: </label>
+                            <label for="txtNome"> Nome: </label>
                         </div>
                         <div class="cadastroEntradaDeDados">
-                            <input type="text" name="txtNome" value="<?= isset($nome) ? $nome : null ?>" placeholder="Digite seu nome" maxlength="100">
+                            <input type="text" name="txtNome" id="nome" value="<?= isset($nome) ? $nome : null ?>" placeholder="Digite seu nome" maxlength="100" required>
+                            <i class="fa-solid fa-exclamation-circle"></i>
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+
+                    </div>
+
+                    <div class="campos">
+                        <div class="cadastroInformacoesPessoais">
+                            <label> Sobrenome : </label>
+                        </div>
+                        <div class="cadastroEntradaDeDados">
+                            <input type="text" name="txtSobrenome" id="sobrenome" value="<?= isset($sobrenome) ? $sobrenome : null ?>" placeholder="Digite seu sobrenome" maxlength="100" required>
+                            <i class="fa-solid fa-exclamation-circle"></i>
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                    </div>
+
+                    <div class="campos">
+                        <div class="cadastroInformacoesPessoais">
+                            <label> Email: </label>
+                        </div>
+                        <div class="cadastroEntradaDeDados">
+                            <input type="tel" name="txtEmail" id="email" value="<?= isset($email) ? $email : null ?>" placeholder="Digite seu email" pattern=".+@.+\..+" required>
+                            <i class="fa-solid fa-exclamation-circle"></i>
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                    </div>
+
+                    <div class="campos">
+                        <div class="cadastroInformacoesPessoais">
+                            <label> Senha: </label>
+                        </div>
+                        <div class="cadastroEntradaDeDados">
+                            <input type="tel" name="txtSenha" id="senha" value="<?= isset($senha) ? $senha : null ?>" placeholder="Digite sua senha" required>
+                            <i class="fa-solid fa-exclamation-circle"></i>
+                            <i class="fa-solid fa-check"></i>
                         </div>
                     </div>
             </div>
-
-            <div class="campos">
-                <div class="cadastroInformacoesPessoais">
-                    <label> Sobrenome : </label>
-                </div>
-                <div class="cadastroEntradaDeDados">
-                    <input type="text" name="txtSobrenome" value="<?= isset($sobrenome) ? $sobrenome : null ?>" placeholder="Digite seu sobrenome" maxlength="100">
-                </div>
-            </div>
-
-            <div class="campos">
-                <div class="cadastroInformacoesPessoais">
-                    <label> Email: </label>
-                </div>
-                <div class="cadastroEntradaDeDados">
-                    <input type="tel" name="txtEmail" value="<?= isset($email) ? $email : null ?>" placeholder="Digite seu email">
-                </div>
-            </div>
-
-            <div class="campos">
-                <div class="cadastroInformacoesPessoais">
-                    <label> Senha: </label>
-                </div>
-                <div class="cadastroEntradaDeDados">
-                    <input type="tel" name="txtSenha" value="<?= isset($senha) ? $senha : null ?>" placeholder="Digite sua senha">
-                </div>
-            </div>
-
             <div class="enviar">
                 <div class="enviar">
                     <input type="submit" name="btnEnviar" value="Salvar">
                 </div>
             </div>
+            </form>
         </div>
     </section>
     <section class="principal">

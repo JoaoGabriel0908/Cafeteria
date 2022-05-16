@@ -1,9 +1,12 @@
 <?php
-
+// Import do arquivo de configuração do projeto
+require_once('modulo/config.php');
 // Essa variavel foi criada para diferenciar no action do formulário qual
 // a ação deveria ser levada para a router (inserir ou editar).
 // Nas condições abaixo mudamos o action da variacel para a ação de editar.
 $form = (string) "router.php?componente=categorias&action=inserir";
+
+$foto = (string) null;
 
 // Valida se a utilização da variavel de sessão esta ativa no servidor
 if (session_status()) {
@@ -11,14 +14,14 @@ if (session_status()) {
     if (!empty($_SESSION['dadosCategoria'])) {
         $id             = $_SESSION['dadosCategoria']['id'];
         $nome           = $_SESSION['dadosCategoria']['nome'];
-        $icone          = $_SESSION['dadosCategoria']['icone'];
+        $foto           = $_SESSION['dadosCategoria']['foto'];
 
         // Mudamos a ação do form para editar o registro no click do botão
         // da ação salvar.
-        $form = "router.php?componente=categorias&action=editar&id=" . $id;
+        $form = "router.php?componente=categorias&action=editar&id=".$id."&foto=".$foto;
 
         // Destroi uma variavel da memoria do servidor
-        // unset($_SESSION['dadosCategorias']);
+        unset($_SESSION['dadosCategorias']);
     }
 }
 
@@ -30,6 +33,7 @@ if (session_status()) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/d0d3619a1c.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./CSSCMS/reset.css">
     <link rel="stylesheet" href="./CSSCMS/autenticacao.css">
     <link rel="stylesheet" href="./CSSCMS/produtos.css">
@@ -93,13 +97,13 @@ if (session_status()) {
             </div>
             <div id="cadastroInformacoes">
                 <!-- Enviando variaveis para o router -->
-                <form action="<?= $form ?>" name="frmCadastro" method="post" enctype="multipart/form-data">
+                <form action="<?=$form?>" name="frmCadastro" method="post" enctype="multipart/form-data">
                     <div class="campos">
                         <div class="cadastroInformacoesPessoais">
                             <label> Nome: </label>
                         </div>
                         <div class="cadastroEntradaDeDados">
-                            <input type="text" name="txtNome" value="<?= isset($nome) ? $nome : null ?>" placeholder="Digite sua Categoria" maxlength="100">
+                            <input type="text" name="txtNome" value="<?= isset($nome) ? $nome : null ?>" placeholder="Digite sua Categoria" maxlength="100" required>
                         </div>
                     </div>
             </div>
@@ -116,6 +120,9 @@ if (session_status()) {
                 <div class="enviar">
                     <input type="submit" name="btnEnviar" value="Salvar">
                 </div>
+            </div>
+            <div class="campos">
+                <img src="<?=DIRETORIO_FILE_UPLOAD.$foto?>" alt="">
             </div>
         </div>
     </section>
@@ -137,19 +144,24 @@ if (session_status()) {
                 // Chama a função que vai retornar os dados de contatos
                 $listMensagem = listarCategorias();
 
+                if($listMensagem = listarCategorias()){
+
                 // Estrutura de repetição para retornar ps dados do array e printar na tela
                 foreach ($listMensagem as $item) {
+
+                    // Variavel para carregar a foto que veio do BD
+                    $foto = $item['foto'];
                 ?>
 
                     <tr id="tblLinhas">
                         <td class="tblColunas registros"><?= $item['nome'] ?></td>
-                        <td class="tblColunas registros"><img src="arquivos/<?= $item['icone'] ?>" class="foto"></td>
+                        <td class="tblColunas registros"><img src="<?=DIRETORIO_FILE_UPLOAD.$foto?>" class="foto"></td>
 
                         <td class="tblColunas registros">
                             <a href="router.php?componente=categorias&action=buscar&id=<?= $item['id'] ?>">
                                 <img src="img/edit.png" alt="Editar" title="Editar" class="editar">
                             </a>
-                            <a onclick="return confirm('Deseja realmente excluir a <?= $item['nome'] ?> categoria?')" href="router.php?componente=categorias&action=deletar&id=<?= $item['id'] ?>">
+                            <a onclick="return confirm('Deseja realmente excluir a <?= $item['nome'] ?> categoria?')" href="router.php?componente=categorias&action=deletar&id=<?=$item['id']?>&foto=<?=$foto?>">
                                 <img src="img/trash.png" alt="Excluir" title="Excluir" class="excluir">
                             </a>
                             <img src="img/search.png" alt="Visualizar" title="Visualizar" class="pesquisar">
@@ -157,6 +169,7 @@ if (session_status()) {
                     </tr>
                 <?php
                 }
+            }
                 ?>
             </table>
         </div>

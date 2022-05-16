@@ -3,24 +3,24 @@
 // Import do arquivo de configurção do projeto
 require_once('modulo/config.php');
 
-function inserirProdutos($dadosProduto, $file){
+function inserirProdutos($dadosProdutos, $file){
 
     $nomeFoto = (string) null;
     $destaque = (int) 0;
-    $desconto = (int) 0;
 
     // Validação para verificar se o objeto esta vazio 
-    if(!empty($dadosProduto)){
-
-        if(isset($_POST['chbdestaque'])) {
-            $destaque = 1;
-        } else {
-            $destaque = 0;
-        }
+    if(!empty($dadosProdutos)){
 
         // Validação de caixa vazia dos elementos nome,
-        if(!empty($dadosProduto['txtnome']) && !empty($dadosProduto['txtpreco']))
+        if(!empty($dadosProdutos['txtnome']) && !empty($dadosProdutos['txtpreco']))
             {
+
+                if(isset($_POST['chbdestaque'])) {
+                    $destaque = 1;
+                } else {
+                    $destaque = 0;
+                }
+
                 // Validação para identificar se chegou um arquivo para upload
                 if($file['fleFoto']['name'] != null)
                 {
@@ -44,13 +44,14 @@ function inserirProdutos($dadosProduto, $file){
                     // criar este array conforme as necessidades de manipulação do BD
                     // OBS: Criar as chaves do array conforme os nomes dos atributos do BD
                     $arrayDados = array(
-                    "nome"                  => $dadosProduto['txtnome'],
-                    "preco"                 => $dadosProduto['txtpreco'],
-                    "descricao"             => $dadosProduto['txtdescricao'],
+                    "nome"                  => $dadosProdutos['txtnome'],
+                    "preco"                 => $dadosProdutos['txtpreco'],
+                    "descricao"             => $dadosProdutos['txtdescricao'],
                     "foto"                  => $nomeFoto,
                     "destaque"              => $destaque,
-                    "desconto"              => $dadosProduto['numdesconto']
-                );
+                    "desconto"              => $dadosProdutos['numdesconto'],
+                    "idcategoria"           => $dadosProdutos['sltCategoria']
+                    );
                 
                 // Require do arquivo da model que faz a conexão direta com o BD
                 require_once('./model/bd/todosProdutos.php');
@@ -165,7 +166,7 @@ function atualizarProduto ($dadosProduto, $arrayDados){
                     // Validação para identificar se será enviado ao servidor uma nova foto
                     if($file['fleFoto']['name'] != null)
                     {
-                        // Import da função de upload para emviar a nova foto ao servidor
+                        // Import da função de upload para enviar a nova foto ao servidor
                         require_once('modulo/upload.php');
 
                         // Chama a função de upload
@@ -187,7 +188,8 @@ function atualizarProduto ($dadosProduto, $arrayDados){
                         "descricao"             => $dadosProduto['txtdescricao'],
                         "foto"                  => $novaFoto,
                         "destaque"              => $destaque,
-                        "desconto"              => $dadosProduto['numdesconto']
+                        "desconto"              => $dadosProduto['numdesconto'],
+                        "idcategoria"           => $dadosProduto['sltCategoria']
                     );
 
                     // Require do arquivo da model que faz a conexão direta com o BD
@@ -230,3 +232,4 @@ function listarProdutos (){
         return false;
 }
 
+?>
