@@ -75,9 +75,8 @@ section .logout .bem-vindo{
     margin-bottom: 20px;
 }
 /* Principal */
-section.principal{
+main{
     flex-grow: 1;
-    max-height: 500px;
     height: auto;
     background-color: white;
 }

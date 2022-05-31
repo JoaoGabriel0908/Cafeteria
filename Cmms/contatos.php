@@ -74,6 +74,7 @@
                     <td class="tblColunas destaque"> Nome </td>
                     <td class="tblColunas destaque"> email </td>
                     <td class="tblColunas destaque"> Mensagem </td>
+                    <td class="tblColunas destaque"> Ações </td>
                 </tr>
                 <?php
                 // Import do arquivo da controller para solicitar a listagem dos dados
@@ -91,13 +92,10 @@
                         <td class="tblColunas registros"><?= $item['mensagem'] ?></td>
 
                         <td class="tblColunas registros">
-                            <a href="router.php?componente=contatos&action=buscar&id=<?= $item['id'] ?>">
-                                <img src="img/edit.png" alt="Editar" title="Editar" class="editar">
-                            </a>
                             <a onclick="return confirm('Deseja realmente excluir este <?= $item['nome'] ?> contato?')" href="router.php?componente=contatos&action=deletar&id=<?= $item['id'] ?>">
-                                <img src="img/trash.png" alt="Excluir" title="Excluir" class="excluir">
+                                <img src="IMGs/lixeira.png" alt="Excluir" title="Excluir" class="excluir">
                             </a>
-                            <img src="img/search.png" alt="Visualizar" title="Visualizar" class="pesquisar">
+                            <img src="IMGs/visualizar.png" alt="Visualizar" title="Visualizar" class="pesquisar">
                         </td>
                     </tr>
                 <?php

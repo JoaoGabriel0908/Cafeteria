@@ -36,7 +36,6 @@ if (session_status()) {
     <link rel="stylesheet" href="./CSSCMS/reset.css">
     <link rel="stylesheet" href="./CSSCMS/autenticacao.css">
     <link rel="stylesheet" href="./CSSCMS/produtos.css">
-    <script src="../Javascript/dashboard.js" defer></script>
     <title>Dashboard</title>
 </head>
 
@@ -154,7 +153,7 @@ if (session_status()) {
             <table id="tblConsulta">
                 <tr>
                     <td id="tblTitulo" colspan="6">
-                        <h1> Consulta de Produtos</h1>
+                        <h1> Consulta de Usuários</h1>
                     </td>
                 </tr>
                 <tr id="tblLinhas">
@@ -162,6 +161,7 @@ if (session_status()) {
                     <td class="tblColunas destaque"> Sobrenome </td>
                     <td class="tblColunas destaque"> Email </td>
                     <td class="tblColunas destaque"> Senha </td>
+                    <td class="tblColunas destaque"> Ações </td>
                 </tr>
                 <?php
                 // Import do arquivo da controller para solicitar a listagem dos dados
@@ -181,12 +181,12 @@ if (session_status()) {
 
                         <td class="tblColunas registros">
                             <a href="router.php?componente=usuarios&action=buscar&id=<?= $item['id'] ?>">
-                                <img src="img/edit.png" alt="Editar" title="Editar" class="editar">
+                                <img src="IMGs/botao-editar.png" alt="Editar" title="Editar" class="editar">
                             </a>
                             <a onclick="return confirm('Deseja realmente excluir a <?= $item['nome'] ?> categoria?')" href="router.php?componente=usuarios&action=deletar&id=<?= $item['id'] ?>">
-                                <img src="img/trash.png" alt="Excluir" title="Excluir" class="excluir">
+                                <img src="IMGs/lixeira.png" alt="Excluir" title="Excluir" class="excluir">
                             </a>
-                            <img src="img/search.png" alt="Visualizar" title="Visualizar" class="pesquisar">
+                            <img src="IMGs/visualizar.png" alt="Visualizar" title="Visualizar" class="pesquisar">
                         </td>
                     </tr>
                 <?php
