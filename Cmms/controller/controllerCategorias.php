@@ -1,7 +1,7 @@
 <?php
 
 // Import do arquivo de configurção do projeto
-require_once('./modulo/config.php');
+require_once('../Cmms/modulo/config.php');
 
 function inserirCategorias($dadosCategorias, $file)
 {
@@ -57,7 +57,7 @@ function inserirCategorias($dadosCategorias, $file)
 function listarCategorias()
 {
 
-    require_once('model/bd/categoriasCafe.php');
+    require_once(SRC.'./Cmms/model/bd/categoriasCafe.php');
 
     // Chama a função que vai buscar os dados no BD
     $dados = selectAllCategorias();
@@ -193,7 +193,7 @@ function excluirCategoria($arrayDados)
             // Validação para caso a foto não exista com o registro
             if ($foto != null) {
 
-                if (unlink(DIRETORIO_FILE_UPLOAD . $foto)) {
+                if (@unlink(SRC.DIRETORIO_FILE_UPLOAD . $foto)) {
                     return true;
                 } else
                     return array(

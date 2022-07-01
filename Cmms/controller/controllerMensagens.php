@@ -1,6 +1,6 @@
 <?php
 // Import do arquivo que vai buscar os dados no BD
-require_once('model/bd/mensagens.php');
+require_once('../Cmms/model/bd/mensagens.php');
 
 function excluirMensagem ($id){
 

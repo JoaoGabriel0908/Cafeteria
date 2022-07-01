@@ -1,7 +1,7 @@
 <?php
 
 // Import do arquivo de configurção do projeto
-require_once('modulo/config.php');
+require_once('../Cmms/modulo/config.php');
 
 function inserirProdutos($dadosProdutos, $file){
 
@@ -92,7 +92,7 @@ function excluirProdutos($arrayDados){
             // Validação para caso a foto não exista com o registro
             if($foto != null)
             {
-                if(unlink(DIRETORIO_FILE_UPLOAD.$foto)){
+                if(@unlink(DIRETORIO_FILE_UPLOAD.$foto)){
                     return true;
                 }
                 else
@@ -220,7 +220,7 @@ function atualizarProduto ($dadosProduto, $arrayDados){
 
 function listarProdutos (){
 
-    require_once('model/bd/todosProdutos.php');
+    require_once(SRC.'./Cmms/model/bd/todosProdutos.php');
 
     // Chama a função que vai buscar os dados no BD
     $dados = selectAllProdutos();
